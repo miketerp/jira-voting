@@ -29,9 +29,6 @@ var config = {
         loader: "style-loader!css-loader"
       }
     ]
-  },
-  devServer: {
-    contentBase: APP_DIR + '/index.html'
   }
 };
 

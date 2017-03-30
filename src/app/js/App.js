@@ -1,52 +1,78 @@
 import React, { Component } from 'react';
 import '../App.css';
 import {
-  Button,
-  ButtonToolbar,
+  Grid,
+  Row,
+  Col,
   FormGroup,
   ControlLabel,
   FormControl,
-  HelpBlock
-} from 'react-bootstrap';
+  Button
+} from  'react-bootstrap';
 
 class App extends Component {
   constructor(props) {
     super(props);
 
     this.state = {
-      value: 'helloes!'
+      value: '',
+      pass: 'apples and more apples',
+      user: 'peter.kim@groupbyinc.com'
     };
   }
 
-  _handleChange() {
-    return 'derp';
+  _getValidationState() {
+    const length = this.state.value.length;
+    if (length > 10) return 'success';
+    else if (length > 5) return 'warning';
+    else if (length > 0) return 'error';
   }
 
   render() {
     return (
-      <div className="App">
-        <div className="App-header">
+      <div>
+        <Grid>
+          <Row className="show-grid">
+            <Col xsOffset={3} xs={6} mdOffset={3} md={6}>
+              <form>
+                <FormGroup
+                  controlId="formBasicText"
+                  validationState={this._getValidationState()}>
+                  <ControlLabel>
+                    Welcom please login
+                  </ControlLabel>
 
-          <h2>Welcome to React</h2>
-        </div>
-        <p className="App-intro">
-          To get started, edit <code>src/App.js</code> and save to reload.
-        </p>
-        <div>
-          <form>
-            <FormGroup controlId="formBasicText" >
-              <ControlLabel>Working example with validation</ControlLabel>
-              <FormControl
-                type="text"
-                value={this.state.value}
-                placeholder="Enter text"
-                onChange={this._handleChange}
-              />
-              <FormControl.Feedback />
-              <HelpBlock>Validation is based on string length.</HelpBlock>
-            </FormGroup>
-          </form>
-        </div>
+                  <FormControl
+                    type="text"
+                    value={this.state.user}
+                    placeholder="Enter text"
+                    onChange={(e) => {
+                      this.setState({
+                        value: e.target.value
+                      });
+                    }}
+                  />
+
+                  <br/>
+
+                  <FormControl
+                    type="text"
+                    value={this.state.pass}
+                    placeholder="Enter text"
+                    onChange={(e) => {
+                      this.setState({
+                        value: e.target.value
+                      });
+                    }}
+                  />
+                  <FormControl.Feedback />
+                </FormGroup>
+              </form>
+              <Button bsStyle="primary" bsSize="large" block>Login</Button>
+            </Col>
+          </Row>
+          <br/>
+        </Grid>
       </div>
     );
   }

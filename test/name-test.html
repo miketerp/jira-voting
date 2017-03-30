@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Namespace Test v0.0.1</title>
+  <script src="/socket.io/socket.io.js"></script>
+  <script src="https://code.jquery.com/jquery-1.11.1.js"></script>
+  <style>
+    .button {
+      height: 50px;
+      width: 100px;
+      background-color: cornflowerblue;
+      color: #d9deff;
+      font-size: 1.5em;
+      border: solid 1px black;
+      display: block;
+      margin: 10px;
+    }
+    .selected {
+      background-color: darkred;
+    }
+  </style>
+</head>
+<body>
+<h3 id="team">Current Team:</h3>
+<div id="sr-btn" class="button">SR</div>
+<div id="wis-btn" class="button">WIS</div>
+<div id="bbd-btn" class="button">BBD</div>
+<div id="sre-btn" class="button">SRE</div>
+
+<label>Name:</label><input id="name" type="text" size="20"/>
+<label>Vote:</label><input id="vote" type="text" size="20"/>
+  <div id="vote-button" class="button">VOTE</div>
+
+  <script>
+    $(function () {
+
+      var socket = undefined;
+
+      $('#vote-button').click(function(){
+        if (socket) {
+          socket.emit('vote', {vote: $('#vote').val(), name: $('#name').val()});
+        }
+      });
+
+      $('#sr-btn').click(function(){
+        socket = io('/searchandiser');
+        $('#team').text('Current Team: Searchandiser');
+        $('.selected').removeClass('selected');
+        $(this).addClass('selected');
+
+        socket.on('response', function(msg){
+          $('body').append($('<p>').text(msg));
+        });
+      });
+
+      $('#wis-btn').click(function(){
+        socket = io('/widom');
+        $('#team').text('Current Team: Wisdom');
+        $('.selected').removeClass('selected');
+        $(this).addClass('selected');
+
+        socket.on('response', function(msg){
+          $('body').append($('<p>').text(msg));
+        });
+      });
+
+      $('#sre-btn').click(function(){
+        socket = io('/site-reliability');
+        $('#team').text('Current Team: Site Reliability');
+        $('.selected').removeClass('selected');
+        $(this).addClass('selected');
+
+        socket.on('response', function(msg){
+          $('body').append($('<p>').text(msg));
+        });
+      });
+
+      $('#bbd-btn').click(function(){
+        socket = io('/storefront');
+        $('#team').text('Current Team: Storefront');
+        $('.selected').removeClass('selected');
+        $(this).addClass('selected');
+
+        socket.on('response', function(msg){
+          $('body').append($('<p>').text(msg));
+        });
+      });
+    });
+  </script>
+</body>
+</html>
