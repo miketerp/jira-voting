@@ -1,0 +1,433 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		374807171E8DA2DF00B92854 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 374807161E8DA2DF00B92854 /* main.m */; };
+		3748071A1E8DA2DF00B92854 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 374807191E8DA2DF00B92854 /* AppDelegate.m */; };
+		3748071D1E8DA2DF00B92854 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3748071C1E8DA2DF00B92854 /* ViewController.m */; };
+		374807201E8DA2DF00B92854 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3748071E1E8DA2DF00B92854 /* Main.storyboard */; };
+		374807221E8DA2DF00B92854 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 374807211E8DA2DF00B92854 /* Images.xcassets */; };
+		374807251E8DA2DF00B92854 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 374807231E8DA2DF00B92854 /* LaunchScreen.xib */; };
+		374807311E8DA2DF00B92854 /* ScrumVoterTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 374807301E8DA2DF00B92854 /* ScrumVoterTests.m */; };
+		374807451E8DB24F00B92854 /* TableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 374807441E8DB24F00B92854 /* TableViewController.m */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		3748072B1E8DA2DF00B92854 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 374807091E8DA2DF00B92854 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 374807101E8DA2DF00B92854;
+			remoteInfo = ScrumVoter;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		374807111E8DA2DF00B92854 /* ScrumVoter.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ScrumVoter.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		374807151E8DA2DF00B92854 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		374807161E8DA2DF00B92854 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		374807181E8DA2DF00B92854 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
+		374807191E8DA2DF00B92854 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		3748071B1E8DA2DF00B92854 /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
+		3748071C1E8DA2DF00B92854 /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
+		3748071F1E8DA2DF00B92854 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		374807211E8DA2DF00B92854 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
+		374807241E8DA2DF00B92854 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
+		3748072A1E8DA2DF00B92854 /* ScrumVoterTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ScrumVoterTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		3748072F1E8DA2DF00B92854 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		374807301E8DA2DF00B92854 /* ScrumVoterTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ScrumVoterTests.m; sourceTree = "<group>"; };
+		374807431E8DB24F00B92854 /* TableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TableViewController.h; sourceTree = "<group>"; };
+		374807441E8DB24F00B92854 /* TableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TableViewController.m; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		3748070E1E8DA2DF00B92854 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		374807271E8DA2DF00B92854 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		374807081E8DA2DF00B92854 = {
+			isa = PBXGroup;
+			children = (
+				374807131E8DA2DF00B92854 /* ScrumVoter */,
+				3748072D1E8DA2DF00B92854 /* ScrumVoterTests */,
+				374807121E8DA2DF00B92854 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		374807121E8DA2DF00B92854 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				374807111E8DA2DF00B92854 /* ScrumVoter.app */,
+				3748072A1E8DA2DF00B92854 /* ScrumVoterTests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		374807131E8DA2DF00B92854 /* ScrumVoter */ = {
+			isa = PBXGroup;
+			children = (
+				374807431E8DB24F00B92854 /* TableViewController.h */,
+				374807441E8DB24F00B92854 /* TableViewController.m */,
+				374807181E8DA2DF00B92854 /* AppDelegate.h */,
+				374807191E8DA2DF00B92854 /* AppDelegate.m */,
+				3748071B1E8DA2DF00B92854 /* ViewController.h */,
+				3748071C1E8DA2DF00B92854 /* ViewController.m */,
+				3748071E1E8DA2DF00B92854 /* Main.storyboard */,
+				374807211E8DA2DF00B92854 /* Images.xcassets */,
+				374807231E8DA2DF00B92854 /* LaunchScreen.xib */,
+				374807141E8DA2DF00B92854 /* Supporting Files */,
+			);
+			path = ScrumVoter;
+			sourceTree = "<group>";
+		};
+		374807141E8DA2DF00B92854 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				374807151E8DA2DF00B92854 /* Info.plist */,
+				374807161E8DA2DF00B92854 /* main.m */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		3748072D1E8DA2DF00B92854 /* ScrumVoterTests */ = {
+			isa = PBXGroup;
+			children = (
+				374807301E8DA2DF00B92854 /* ScrumVoterTests.m */,
+				3748072E1E8DA2DF00B92854 /* Supporting Files */,
+			);
+			path = ScrumVoterTests;
+			sourceTree = "<group>";
+		};
+		3748072E1E8DA2DF00B92854 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				3748072F1E8DA2DF00B92854 /* Info.plist */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		374807101E8DA2DF00B92854 /* ScrumVoter */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 374807341E8DA2DF00B92854 /* Build configuration list for PBXNativeTarget "ScrumVoter" */;
+			buildPhases = (
+				3748070D1E8DA2DF00B92854 /* Sources */,
+				3748070E1E8DA2DF00B92854 /* Frameworks */,
+				3748070F1E8DA2DF00B92854 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = ScrumVoter;
+			productName = ScrumVoter;
+			productReference = 374807111E8DA2DF00B92854 /* ScrumVoter.app */;
+			productType = "com.apple.product-type.application";
+		};
+		374807291E8DA2DF00B92854 /* ScrumVoterTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 374807371E8DA2DF00B92854 /* Build configuration list for PBXNativeTarget "ScrumVoterTests" */;
+			buildPhases = (
+				374807261E8DA2DF00B92854 /* Sources */,
+				374807271E8DA2DF00B92854 /* Frameworks */,
+				374807281E8DA2DF00B92854 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				3748072C1E8DA2DF00B92854 /* PBXTargetDependency */,
+			);
+			name = ScrumVoterTests;
+			productName = ScrumVoterTests;
+			productReference = 3748072A1E8DA2DF00B92854 /* ScrumVoterTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		374807091E8DA2DF00B92854 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0620;
+				ORGANIZATIONNAME = "GroupBy Inc";
+				TargetAttributes = {
+					374807101E8DA2DF00B92854 = {
+						CreatedOnToolsVersion = 6.2;
+					};
+					374807291E8DA2DF00B92854 = {
+						CreatedOnToolsVersion = 6.2;
+						TestTargetID = 374807101E8DA2DF00B92854;
+					};
+				};
+			};
+			buildConfigurationList = 3748070C1E8DA2DF00B92854 /* Build configuration list for PBXProject "ScrumVoter" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 374807081E8DA2DF00B92854;
+			productRefGroup = 374807121E8DA2DF00B92854 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				374807101E8DA2DF00B92854 /* ScrumVoter */,
+				374807291E8DA2DF00B92854 /* ScrumVoterTests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		3748070F1E8DA2DF00B92854 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				374807201E8DA2DF00B92854 /* Main.storyboard in Resources */,
+				374807251E8DA2DF00B92854 /* LaunchScreen.xib in Resources */,
+				374807221E8DA2DF00B92854 /* Images.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		374807281E8DA2DF00B92854 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		3748070D1E8DA2DF00B92854 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				3748071D1E8DA2DF00B92854 /* ViewController.m in Sources */,
+				3748071A1E8DA2DF00B92854 /* AppDelegate.m in Sources */,
+				374807451E8DB24F00B92854 /* TableViewController.m in Sources */,
+				374807171E8DA2DF00B92854 /* main.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		374807261E8DA2DF00B92854 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				374807311E8DA2DF00B92854 /* ScrumVoterTests.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		3748072C1E8DA2DF00B92854 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 374807101E8DA2DF00B92854 /* ScrumVoter */;
+			targetProxy = 3748072B1E8DA2DF00B92854 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		3748071E1E8DA2DF00B92854 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				3748071F1E8DA2DF00B92854 /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		374807231E8DA2DF00B92854 /* LaunchScreen.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				374807241E8DA2DF00B92854 /* Base */,
+			);
+			name = LaunchScreen.xib;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		374807321E8DA2DF00B92854 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.2;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+			};
+			name = Debug;
+		};
+		374807331E8DA2DF00B92854 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.2;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		374807351E8DA2DF00B92854 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				INFOPLIST_FILE = ScrumVoter/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		374807361E8DA2DF00B92854 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				INFOPLIST_FILE = ScrumVoter/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
+		374807381E8DA2DF00B92854 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(inherited)",
+				);
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = ScrumVoterTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/ScrumVoter.app/ScrumVoter";
+			};
+			name = Debug;
+		};
+		374807391E8DA2DF00B92854 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = ScrumVoterTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/ScrumVoter.app/ScrumVoter";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		3748070C1E8DA2DF00B92854 /* Build configuration list for PBXProject "ScrumVoter" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				374807321E8DA2DF00B92854 /* Debug */,
+				374807331E8DA2DF00B92854 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		374807341E8DA2DF00B92854 /* Build configuration list for PBXNativeTarget "ScrumVoter" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				374807351E8DA2DF00B92854 /* Debug */,
+				374807361E8DA2DF00B92854 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+		374807371E8DA2DF00B92854 /* Build configuration list for PBXNativeTarget "ScrumVoterTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				374807381E8DA2DF00B92854 /* Debug */,
+				374807391E8DA2DF00B92854 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 374807091E8DA2DF00B92854 /* Project object */;
+}
