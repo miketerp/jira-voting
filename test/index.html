@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <title>Jira App Test 0.0.1</title>
+    <script src="/socket.io/socket.io.js"></script>
+    <script src="https://code.jquery.com/jquery-1.11.1.js"></script>
+    <style>
+      #button {
+        height: 50px;
+        width: 100px;
+        background-color: cornflowerblue;
+        color: #d9deff;
+        font-size: 1.5em;
+      }
+    </style>
+
+  </head>
+  <body>
+
+    <input id="vote" type="text" size="20"/>
+    <div id="button"></div>
+
+    <script>
+      $(function () {
+
+        var socket = io();
+
+        $('#button').click(function(){
+          socket.emit('vote', $('#vote').val());
+          $('#vote').val('Should have sent!');
+        });
+
+        socket.on('response', function(vote){
+          $('body').append($('<p>').text("The last vote was " + vote));
+        });
+
+      });
+    </script>
+  </body>
+</html>
