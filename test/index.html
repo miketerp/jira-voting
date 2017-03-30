@@ -5,7 +5,6 @@
     <title>Jira App Test 0.0.1</title>
     <script src="/socket.io/socket.io.js"></script>
     <script src="https://code.jquery.com/jquery-1.11.1.js"></script>
-    <script src="main.js"></script>
     <style>
       #button {
         height: 50px;
@@ -20,7 +19,23 @@
   <body>
 
     <input id="vote" type="text" size="20"/>
-    <div id="button">Send Vote</div>
+    <div id="button"></div>
 
+    <script>
+      $(function () {
+
+        var socket = io();
+
+        $('#button').click(function(){
+          socket.emit('vote', $('#vote').val());
+          $('#vote').val('Should have sent!');
+        });
+
+        socket.on('response', function(vote){
+          $('body').append($('<p>').text("The last vote was " + vote));
+        });
+
+      });
+    </script>
   </body>
 </html>

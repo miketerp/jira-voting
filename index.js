@@ -14,6 +14,7 @@ io.on('connection', function(socket){
 
   socket.on('vote', function(data) {
     console.log(data);
+    io.emit('response', data);
   });
 
   socket.on('disconnect', function() {
@@ -21,8 +22,8 @@ io.on('connection', function(socket){
   });
 });
 
-// basic server stuff. serving on port 3000 rn
-http.listen(3000, function(){
-  console.log('listening on *:3000');
+// basic server stuff.
+http.listen(20380, function(){
+  console.log('Started listening on port 20380...');
 });
 
