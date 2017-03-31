@@ -81,51 +81,16 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <containerView opaque="NO" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="knQ-gt-MLM">
-                                <rect key="frame" x="36" y="86" width="600" height="600"/>
-                                <connections>
-                                    <segue destination="BvL-qp-kdm" kind="show" id="vNP-Yv-26M"/>
-                                </connections>
-                            </containerView>
-                        </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                    </view>
-                    <toolbarItems/>
-                    <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
-                    <connections>
-                        <outlet property="idLabel" destination="nT4-x2-k6E" id="i6W-u5-why"/>
-                        <outlet property="picker" destination="9mW-kd-vXQ" id="Y80-sl-de5"/>
-                        <outlet property="titleLabel" destination="RSY-uo-EJe" id="l3B-AU-fcm"/>
-                        <outlet property="voteViewHeight" destination="fb5-Pa-ie9" id="fyy-t4-nY2"/>
-                        <outlet property="waitViewHeight" destination="PiF-X4-pvB" id="bG4-HY-D5c"/>
-                    </connections>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="Ecd-A9-y4f" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="2281" y="138"/>
-        </scene>
-        <!--View Controller-->
-        <scene sceneID="Po7-7Y-q7O">
-            <objects>
-                <viewController id="kre-Uf-eKz" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="gxT-cp-qsr"/>
-                        <viewControllerLayoutGuide type="bottom" id="RPg-5R-A3n"/>
-                    </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="Wwd-bH-ALg">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="W0Q-RM-UBs" userLabel="Vote View">
-                                <rect key="frame" x="0.0" y="17" width="600" height="569"/>
+                            <view contentMode="scaleToFill" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="W0Q-RM-UBs" userLabel="Vote View">
+                                <rect key="frame" x="0.0" y="16" width="600" height="569"/>
                                 <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" restorationIdentifier="title" text="Title" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="RSY-uo-EJe">
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" restorationIdentifier="title" text="Title" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="RSY-uo-EJe">
                                         <rect key="frame" x="271" y="87" width="33" height="21"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Vul-dt-oAg">
+                                    <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Vul-dt-oAg">
                                         <rect key="frame" x="257" y="514" width="87" height="47"/>
                                         <state key="normal" title="Vote">
                                             <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
@@ -134,69 +99,54 @@
                                             <action selector="vote:" destination="TVZ-If-6le" eventType="touchUpInside" id="R6u-4u-Xln"/>
                                         </connections>
                                     </button>
-                                    <pickerView contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="9mW-kd-vXQ">
+                                    <pickerView contentMode="scaleToFill" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="9mW-kd-vXQ">
                                         <rect key="frame" x="0.0" y="286" width="600" height="162"/>
                                         <connections>
                                             <outlet property="dataSource" destination="TVZ-If-6le" id="S3D-Bn-fcb"/>
                                             <outlet property="delegate" destination="TVZ-If-6le" id="cal-AU-zgh"/>
                                         </connections>
                                     </pickerView>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" restorationIdentifier="id" text="ID" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nT4-x2-k6E">
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" restorationIdentifier="id" text="ID" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nT4-x2-k6E">
                                         <rect key="frame" x="279" y="58" width="17" height="21"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                </subviews>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="569" id="fb5-Pa-ie9"/>
-                                </constraints>
-                            </view>
-                        </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                    </view>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="cdd-hh-TUu" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="2968" y="-181"/>
-        </scene>
-        <!--View Controller-->
-        <scene sceneID="vht-Nx-mqs">
-            <objects>
-                <viewController id="BvL-qp-kdm" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="zA5-ka-YGj"/>
-                        <viewControllerLayoutGuide type="bottom" id="OPI-ln-3jP"/>
-                    </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="fmg-g0-Jpx">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <view contentMode="scaleToFill" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="28N-5U-b3D" userLabel="Waiting View">
-                                <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
-                                <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" text="Waiting..." textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QRV-m5-gXT">
-                                        <rect key="frame" x="164" y="197" width="272" height="205"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="63"/>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" restorationIdentifier="wait" text="Waiting..." lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7IG-43-hId">
+                                        <rect key="frame" x="228" y="235" width="144" height="71"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="34"/>
                                         <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
-                                    <constraint firstAttribute="centerY" secondItem="QRV-m5-gXT" secondAttribute="centerY" constant="0.5" id="Eif-X7-aNI"/>
-                                    <constraint firstAttribute="height" constant="600" id="PiF-X4-pvB"/>
-                                    <constraint firstAttribute="centerX" secondItem="QRV-m5-gXT" secondAttribute="centerX" id="p5k-2P-mv7"/>
+                                    <constraint firstAttribute="centerX" secondItem="nT4-x2-k6E" secondAttribute="centerX" constant="12.5" id="5SF-ng-r9k"/>
+                                    <constraint firstAttribute="centerX" secondItem="RSY-uo-EJe" secondAttribute="centerX" constant="12.5" id="5fb-Xq-liq"/>
+                                    <constraint firstAttribute="centerX" secondItem="Vul-dt-oAg" secondAttribute="centerX" constant="-0.5" id="7Pk-F5-NaD"/>
+                                    <constraint firstAttribute="centerX" secondItem="7IG-43-hId" secondAttribute="centerX" id="ieT-xG-kvv"/>
+                                    <constraint firstAttribute="centerX" secondItem="9mW-kd-vXQ" secondAttribute="centerX" id="wjw-X7-qL4"/>
                                 </constraints>
                             </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="centerX" secondItem="W0Q-RM-UBs" secondAttribute="centerX" id="ZKN-QN-7bQ"/>
+                        </constraints>
                     </view>
+                    <toolbarItems/>
+                    <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
+                    <connections>
+                        <outlet property="button" destination="Vul-dt-oAg" id="rgD-42-hKy"/>
+                        <outlet property="idLabel" destination="nT4-x2-k6E" id="i6W-u5-why"/>
+                        <outlet property="picker" destination="9mW-kd-vXQ" id="Y80-sl-de5"/>
+                        <outlet property="titleLabel" destination="RSY-uo-EJe" id="l3B-AU-fcm"/>
+                        <outlet property="waitLabel" destination="7IG-43-hId" id="3Pw-kx-c6r"/>
+                    </connections>
                 </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="pkF-Vk-xJH" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Ecd-A9-y4f" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2958" y="541"/>
+            <point key="canvasLocation" x="2281" y="138"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="Vwx-Oq-hL9">

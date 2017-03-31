@@ -8,13 +8,12 @@
 
 #import "VoteViewController.h"
 
-#define SegueIdentifierWait @"embedWait"
-#define SegueIdentifierVote @"embedVote"
-
 @interface VoteViewController ()
     @property (nonatomic, weak) IBOutlet UILabel *idLabel;
     @property (nonatomic, weak) IBOutlet UILabel *titleLabel;
+@property (weak, nonatomic) IBOutlet UILabel *waitLabel;
     @property (nonatomic, weak) IBOutlet UIPickerView *picker;
+@property (weak, nonatomic) IBOutlet UIButton *button;
 
 @end
 
@@ -50,30 +49,27 @@
 }
 - (IBAction)vote:(id)sender {
     //send vote
-    [self performSegueWithIdentifier:SegueIdentifierWait sender:nil];
+
+    [self.titleLabel setHidden:YES];
+    [self.idLabel setHidden:YES];
+    [self.picker setHidden:YES];
+    [self.button setHidden:YES];
+    
+    [self.waitLabel setHidden:NO];
 }
 
 -(void)updateTicketWithId:(NSString*)ticketId withTitle:(NSString*)ticketTitle withValues:(NSArray*)values
 {
     self.titleLabel.text = ticketTitle;
+    [self.titleLabel setHidden:NO];
     self.idLabel.text = ticketId;
+    [self.idLabel setHidden:NO];
     pickerData = values;
     [self.picker reloadAllComponents];
+    [self.picker setHidden:NO];
+    [self.button setHidden:NO];
     
-    [self performSegueWithIdentifier:SegueIdentifierVote sender:nil];
-}
-
-- (void) displayContentController: (UIViewController*) content {
-    [self addChildViewController:content];
-    content.view.frame = [self frameForContentController];
-    [self.view addSubview:self.currentClientView];
-    [content didMoveToParentViewController:self];
-}
-
-- (void) hideContentController: (UIViewController*) content {
-    [content willMoveToParentViewController:nil];
-    [content.view removeFromSuperview];
-    [content removeFromParentViewController];
+    [self.waitLabel setHidden:YES];
 }
 
 
