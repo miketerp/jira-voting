@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
@@ -12,18 +13,25 @@ import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
-import android.widget.Toast;
 
 import java.net.URISyntaxException;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Collections;
 
 import io.socket.emitter.Emitter;
 import io.socket.engineio.client.Socket;
 
 public class ListActivity extends AppCompatActivity {
 
+    private final String LOG = getClass().getSimpleName();
+
     private ListView sessionList;
-    private ArrayAdapter<String> adapter;
+    private static ArrayAdapter<String> adapter;
     private Socket socket;
+
+    private static String[] sessionsArray = MockServer.namepaces;
+    private static ArrayList<String> sessionsList = new ArrayList<String>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -32,31 +40,19 @@ public class ListActivity extends AppCompatActivity {
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
-//        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
-//        fab.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View view) {
-//                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-//                        .setAction("Action", null).show();
-//            }
-//        });
-
         sessionList = (ListView) findViewById(R.id.session_list);
 
+        sessionsList = new ArrayList<String>(Arrays.asList(sessionsArray));
         adapter = new ArrayAdapter<String>(this,
-                android.R.layout.simple_list_item_1, getSessionList());
+                android.R.layout.simple_list_item_1, sessionsList);
         sessionList.setAdapter(adapter);
 
         // Create a message handling object as an anonymous class.
         OnItemClickListener itemClickListener = new OnItemClickListener() {
             public void onItemClick(AdapterView parent, View v, int position, long id) {
-                if(setSession(position)) {
-                    Intent voteactivityIntent = new Intent(parent.getContext(), VoteActivity.class);
-                    startActivity(voteactivityIntent);
-                } else {
-//                    Toast error = new Toast.makeText(getApplicationContext(), "Error", Toast.LENGTH_SHORT);
-//                    error.show();
-                }
+                socket.send("Namespace:" + sessionsArray[position]);
+                Intent voteActivityIntent = new Intent(parent.getContext(), VoteActivity.class);
+                startActivity(voteActivityIntent);
             }
         };
 
@@ -64,16 +60,22 @@ public class ListActivity extends AppCompatActivity {
 
         try {
             socket = new Socket("ws://localhost");
-            socket.on(Socket.EVENT_OPEN, new Emitter.Listener() {
+            socket.on(Socket.EVENT_MESSAGE, new Emitter.Listener() {
                 @Override
                 public void call(Object... args) {
-                    socket.send("hi");
-                    socket.close();
+                    String data = (String)args[0];
+                    updateList(data);
+                }
+            }).on(Socket.EVENT_ERROR, new Emitter.Listener() {
+                @Override
+                public void call(Object... args) {
+                    Exception err = (Exception)args[0];
+                    Log.e(LOG, "SOCKET FAILURE: " + err);
                 }
             });
             socket.open();
         } catch (URISyntaxException e) {
-            e.printStackTrace();
+            Log.e(LOG, "SOCKET OPENING FAILURE");
         }
     }
 
@@ -97,17 +99,16 @@ public class ListActivity extends AppCompatActivity {
     }
 
     private void logout() {
-        //TODO logout
+        socket.send("logout");
         Intent logout = new Intent(this, LoginActivity.class);
         logout.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
         startActivity(logout);
     }
 
-    static String[] getSessionList() {
-        return new String[] {"Searchendiser", "SRE", "StoreFront", "Wisdom", "Shopping Cart", "Services"};
-    }
-
-    static boolean setSession(int index) {
-        return true;
+    public static void updateList(String data) {
+        sessionsArray = data.split(",");
+        Log.e("ListActivity", "XXX list = " + sessionsArray);
+        sessionsList = new ArrayList<String>(Arrays.asList(sessionsArray));
+        adapter.notifyDataSetChanged();
     }
 }
