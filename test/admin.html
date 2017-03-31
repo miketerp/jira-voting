@@ -120,13 +120,12 @@
 
         socket.on('voter voted', function(data) {
           let node = document.createElement('li');
-          node.appendChild(document.createTextNode(data))
+          node.appendChild(document.createTextNode(data));
           $('#voters').append(node);
         });
 
         socket.on('open tickets', function(data) {
           let i = 0;
-
           data.issues.forEach(function (val, key) {
             let idString = 'tix' + i;
 

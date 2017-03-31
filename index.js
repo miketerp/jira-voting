@@ -20,6 +20,9 @@ app.get('/', function (req, res) {
   res.sendFile(__dirname + '/index.html'); // <---- update to be pete's login screen
 });
 
+app.post('/login', function (req, res) {
+});
+
 app.get('/admin', function (req, res) {
   res.sendFile(__dirname + '/test/admin.html');
 });
@@ -310,7 +313,6 @@ sre.on('connection', function (socket) {
           status: val.fields.status.name
         });
       });
-
       sre.emit('open tickets', { issues: tix, total: tix.length });
     });
   });
@@ -346,7 +348,21 @@ sre.on('connection', function (socket) {
           sreUsers[key].ticket = undefined;
         }
       }
+      sreUsers[admin].holdingVote = voteTotal;
     }
+  });
+
+  socket.on('send jira', function() {
+    let admin = hasAdmin(sreUsers);
+    request('PUT', 'https://issues.groupbyinc.com/rest/api/2/issues/' + sreUsers[admin].ticket, {
+      headers: {
+        'Content-type': 'application/json',
+        'Authorization': 'Basic ' + auth
+      },
+      body: JSON.stringify({
+        'jql': '{ "update": { "customfield_10002": [ { "set": ' + sreUsers[admin].holdingVote + ' } ] } }'
+      })
+    })
   });
 });
 
