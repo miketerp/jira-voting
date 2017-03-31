@@ -63,6 +63,29 @@ sr.on('connection', function (socket) {
     srUsers[this.id] = {admin: true};
   });
 
+  socket.on('get open tickets', function (auth) {
+    console.log(auth);
+    request('GET', 'https://issues.groupbyinc.com/rest/api/2/search', {
+      headers: {
+        'Content-type': 'application/json',
+        'Authorization': 'Basic ' + auth
+      }
+    }).then((res) => {
+      openTix.sr = res.getBody('utf-8');
+      let tix = [];
+      for (let t in openTix.sr) {
+        tix.push({
+          key: t.key,
+          summary: t.fields.summary,
+          description: t.fields.description,
+          priority: t.fields.priority.name,
+          status: t.fields.status.name
+        });
+      }
+      sr.emit('open tickets', { issues: tix, total: tix.length });
+    });
+  });
+  
   socket.on('ticket selected', function (tname) {
     console.log('Administrator has started a ticket');
     let admin = hasAdmin(srUsers);
@@ -114,6 +137,29 @@ bbd.on('connection', function (socket) {
     bbdUsers[this.id] = {admin: true};
   });
 
+  socket.on('get open tickets', function (auth) {
+    console.log(auth);
+    request('GET', 'https://issues.groupbyinc.com/rest/api/2/search', {
+      headers: {
+        'Content-type': 'application/json',
+        'Authorization': 'Basic ' + auth
+      }
+    }).then((res) => {
+      openTix.bbd = res.getBody('utf-8');
+      let tix = [];
+      for (let t in openTix.bbd) {
+        tix.push({
+          key: t.key,
+          summary: t.fields.summary,
+          description: t.fields.description,
+          priority: t.fields.priority.name,
+          status: t.fields.status.name
+        });
+      }
+      bbd.emit('open tickets', { issues: tix, total: tix.length });
+    });
+  });
+
   socket.on('ticket selected', function (tname) {
     console.log('Administrator has started a ticket');
     let admin = hasAdmin(bbdUsers);
@@ -163,6 +209,29 @@ wis.on('connection', function (socket) {
   socket.on('adminIsIn', function () {
     console.log('Administrator has logged into WIS');
     wisUsers[this.id] = {admin: true};
+  });
+
+  socket.on('get open tickets', function (auth) {
+    console.log(auth);
+    request('GET', 'https://issues.groupbyinc.com/rest/api/2/search', {
+      headers: {
+        'Content-type': 'application/json',
+        'Authorization': 'Basic ' + auth
+      }
+    }).then((res) => {
+      openTix.wis = res.getBody('utf-8');
+      let tix = [];
+      for (let t in openTix.wis) {
+        tix.push({
+          key: t.key,
+          summary: t.fields.summary,
+          description: t.fields.description,
+          priority: t.fields.priority.name,
+          status: t.fields.status.name
+        });
+      }
+      wis.emit('open tickets', { issues: tix, total: tix.length });
+    });
   });
 
   socket.on('ticket selected', function (tname) {
@@ -236,7 +305,7 @@ sre.on('connection', function (socket) {
           status: t.fields.status.name
         });
       }
-      sre.emit('open tickets', {  issues: tix, total: tix.length });
+      sre.emit('open tickets', { issues: tix, total: tix.length });
     });
   });
 
