@@ -383,5 +383,36 @@ const hasAdmin = (users) => {
 
 const tickets = {'TICK-101': 'Description for ticket #102.', 'TICK-102': 'Description for ticket #102.', 'TICK-103': 'Description for ticket #103.'};
 
-const users = {};
+const userRegistry = [
+  {
+    name: michael,
+    admin: false,
+    namespaces: ['sr', 'sre']
+  },
+  {
+    name: abegail,
+    admin: false,
+    namespaces: ['sr']
+  },
+  {
+    name: amir,
+    admin: false,
+    namespaces: ['sr']
+  },
+  {
+    name: garry,
+    admin: true,
+    namespaces: ['sr', 'sre']
+  },
+  {
+    name: bruce,
+    admin: true,
+    namespaces: ['wis', 'bbd']
+  },
+  {
+    name: tahir,
+    admin: false,
+    namespaces: ['wis']
+  },
+];
 
