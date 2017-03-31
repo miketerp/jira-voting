@@ -5,37 +5,48 @@
   <title>Admin Test v0.0.1</title>
   <script src="/socket.io/socket.io.js"></script>
   <script src="https://code.jquery.com/jquery-1.11.1.js"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/foundation/6.3.1/css/foundation.min.css">
   <style>
     .button {
       height: 50px;
-      width: 100px;
+      width: 125px;
       background-color: cornflowerblue;
       color: #d9deff;
       font-size: 1.5em;
       border: solid 1px black;
       display: inline-block;
       margin: 10px;
+      padding: 10px;
     }
     .selected {
       background-color: darkred;
     }
   </style>
 </head>
-<body>
-  <h3 id="team">Current Team:</h3>
-  <div id="sr-btn" class="button">SR</div>
-  <div id="wis-btn" class="button">WIS</div>
-  <div id="bbd-btn" class="button">BBD</div>
-  <div id="sre-btn" class="button">SRE</div>
-  <hr/>
-  <h3 id="ticket">Current Ticket:</h3>
-  <div id="tix1" class="button">TICK-101</div>
-  <div id="tix2" class="button">TICK-102</div>
-  <div id="tix3" class="button">TICK-103</div>
-  <hr/>
-  <h3>Team Members Voted</h3>
-  <ul id="voters"></ul>
+<body style="text-align: center; padding: 2em">
+  <div class="row">
+    <div>
+      <div class="row">
+        <div class="large-12 columns">
+          <h3 id="team">Current Team:</h3>
+          <div id="sr-btn" class="button">SR</div>
+          <div id="wis-btn" class="button">WIS</div>
+          <div id="bbd-btn" class="button">BBD</div>
+          <div id="sre-btn" class="button">SRE</div>
+        </div>
+      </div>
 
+      <hr/>
+
+      <h3 id="ticket">Current Ticket:</h3>
+      <div id="tix1" class="button">TICK-101</div>
+      <div id="tix2" class="button">TICK-102</div>
+      <div id="tix3" class="button">TICK-103</div>
+      <hr/>
+      <h3>Team Members Voted</h3>
+      <ul id="voters"></ul>
+    </div>
+  </div>
   <script>
     $(function () {
 
@@ -70,5 +81,6 @@
       }
     });
   </script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/foundation/6.3.1/js/foundation.min.js"></script>
 </body>
 </html>

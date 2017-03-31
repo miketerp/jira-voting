@@ -5,32 +5,55 @@
   <title>Namespace Test v0.0.1</title>
   <script src="/socket.io/socket.io.js"></script>
   <script src="https://code.jquery.com/jquery-1.11.1.js"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/foundation/6.3.1/css/foundation.min.css">
   <style>
     .button {
       height: 50px;
-      width: 100px;
+      width: 125px;
       background-color: cornflowerblue;
       color: #d9deff;
       font-size: 1.5em;
       border: solid 1px black;
-      display: block;
+      display: inline-block;
       margin: 10px;
+      padding: 10px;
     }
     .selected {
       background-color: darkred;
     }
   </style>
 </head>
-<body>
-  <h3 id="team">Current Team:</h3>
-  <div id="sr-btn" class="button">SR</div>
-  <div id="wis-btn" class="button">WIS</div>
-  <div id="bbd-btn" class="button">BBD</div>
-  <div id="sre-btn" class="button">SRE</div>
+<body style="text-align: center; padding: 2em">
+  <div class="row">
+    <div class="large-12 columns">
+      <div class="row">
+        <h3 id="team">Current Team:</h3>
+        <div id="sr-btn" class="button">SR</div>
+        <div id="wis-btn" class="button">WIS</div>
+        <div id="bbd-btn" class="button">BBD</div>
+        <div id="sre-btn" class="button">SRE</div>
+      </div>
 
-  <label>Name:</label><input id="name" type="text" size="20"/>
-  <label>Vote:</label><input id="vote" type="text" size="20"/>
-  <div id="vote-button" class="button">VOTE</div>
+      <div class="row" style="text-align: left">
+        <div class="large-offset-2 large-8 columns">
+          <hr/>
+          <form>
+            <fieldset>
+
+              <label>Name:
+                <input id="name" type="text" size="20" placeholder="michael"/>
+              </label>
+
+              <label>Vote:
+                <input id="vote" type="text" size="20" placeholder="7"/></label>
+              <br/>
+              <div id="vote-button" class="button">VOTE</div>
+            </fieldset>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
 
   <script>
     $(function () {
