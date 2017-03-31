@@ -64,9 +64,11 @@
         <div id="rootTicket">
         </div>
         <hr/>
-        <h3>Team Members Voted</h3>
         <div>
-          <ul id="voters" style="list-style-type: none;"></ul>
+          <h3>Team Members Voted</h3>
+          <div id="votedList">
+            <ul id="voters" style="list-style-type: none;"></ul>
+          </div>
         </div>
       </div>
     </div>
@@ -108,7 +110,12 @@
         socket.emit('adminIsIn', {});
 
         socket.on('response', function(msg){
-          $('body').append($('<p>').text(msg));
+          $('#votedList').append($('<p>').text(msg));
+          $('#votedList').append('<button id="sendJira" style="margin: 10px;">Send</button>');
+
+          $('#sendJira').click(() => {
+            socket.emit('send jira', '');
+          });
         });
 
         socket.on('voter voted', function(data) {
@@ -132,7 +139,6 @@
             let $card = $('#' + idString);
 
             $card.click(() => {
-              console.log($card);
               setSelected($card);
               socket.emit('ticket selected', $('#' + idString + ' h4').text())
             });
