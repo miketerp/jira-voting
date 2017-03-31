@@ -1,10 +1,11 @@
-const app  = require('express')();
-const http = require('http').Server(app);
-const io   = require('socket.io')(http);
-const sr   = io.of('/searchandiser');
-const bbd  = io.of('/storefront');
-const wis  = io.of('/wisdom');
-const sre  = io.of('/site-reliability');
+const app     = require('express')();
+const http    = require('http').Server(app);
+const io      = require('socket.io')(http);
+const request = require('then-request');
+const sr      = io.of('/searchandiser');
+const bbd     = io.of('/storefront');
+const wis     = io.of('/wisdom');
+const sre     = io.of('/site-reliability');
 
 http.listen(20380, function () {
   console.log('Started listening on port 20380...');
@@ -34,6 +35,8 @@ app.get('/need-admin', function (req, res) {
 /**
  * SOCKET.IO NAMESPACES
  */
+
+const openTix = { sr: [], bbd: [], wis: [], sre: []};
 
 // DEFAULT namespace - should do nothing.
 io.on('connection', function (socket) {
@@ -65,7 +68,7 @@ sr.on('connection', function (socket) {
     let admin = hasAdmin(srUsers);
     console.log('Admin: ' + admin);
     srUsers[admin]['ticket'] = tname;
-    sr.emit('ticket', { title: tname, description: tickets[tname] });
+    sr.emit('ticket', {title: tname, description: tickets[tname]});
   });
 
   socket.on('vote', function (data) {
@@ -73,10 +76,10 @@ sr.on('connection', function (socket) {
     const msg        = data.name + ' on Searchandiser voted ' + data.vote;
     console.log(msg);
 
-    let admin = hasAdmin(bbdUsers);
+    let admin = hasAdmin(srUsers);
     console.log('Admin: ' + admin);
     if (admin) {
-      bbd.to(admin).emit('voter voted', data.name + ': ' + data.vote);
+      sr.to(admin).emit('voter voted', data.name + ': ' + data.vote);
     }
 
     let voteTotal = votesAreIn(srUsers);
@@ -116,7 +119,7 @@ bbd.on('connection', function (socket) {
     let admin = hasAdmin(bbdUsers);
     console.log('Admin: ' + admin);
     bbdUsers[admin]['ticket'] = tname;
-    bbd.emit('ticket', { title: tname, description: tickets[tname] });
+    bbd.emit('ticket', {title: tname, description: tickets[tname]});
   });
 
   socket.on('vote', function (data) {
@@ -159,7 +162,7 @@ wis.on('connection', function (socket) {
 
   socket.on('adminIsIn', function () {
     console.log('Administrator has logged into WIS');
-    srUsers[this.id] = {admin: true};
+    wisUsers[this.id] = {admin: true};
   });
 
   socket.on('ticket selected', function (tname) {
@@ -167,7 +170,7 @@ wis.on('connection', function (socket) {
     let admin = hasAdmin(wisUsers);
     console.log('Admin: ' + admin);
     wisUsers[admin]['ticket'] = tname;
-    wis.emit('ticket', { title: tname, description: tickets[tname] });
+    wis.emit('ticket', {title: tname, description: tickets[tname]});
   });
 
   socket.on('vote', function (data) {
@@ -214,12 +217,26 @@ sre.on('connection', function (socket) {
     sreUsers[this.id] = {admin: true};
   });
 
+  socket.on('get open tickets', function (auth) {
+    request('GET', 'https://issues.groupbyinc.com/rest/api/2/search', {
+      headers: {
+        'Content-type': 'application/json',
+        'Authorization': 'Basic ' + auth
+      }
+    }).then((res) => {
+      openTix['sre'] = res.getBody('utf-8');
+      console.log(openTix['sre']);
+      // let admin = hasAdmin(sreUsers);
+      // sre.to[admin].emit('open tickets')
+    });
+  });
+
   socket.on('ticket selected', function (tname) {
     console.log('Administrator has started a ticket');
     let admin = hasAdmin(sreUsers);
     console.log('Admin: ' + admin);
     sreUsers[admin]['ticket'] = tname;
-    sre.emit('ticket', { title: tname, description: tickets[tname] });
+    sre.emit('ticket', {title: tname, description: tickets[tname]});
   });
 
   socket.on('vote', function (data) {
@@ -281,4 +298,6 @@ const hasAdmin = (users) => {
  */
 
 const tickets = {'TICK-101': 'Description for ticket #102.', 'TICK-102': 'Description for ticket #102.', 'TICK-103': 'Description for ticket #103.'};
+
+const users = {};
 
