@@ -63,9 +63,6 @@
         <hr/>
         <h3 id="ticket">Current Ticket:</h3>
         <div id="rootTicket">
-          <div id="tix1" class="button">TICK-101</div>
-          <div id="tix2" class="button">TICK-102</div>
-          <div id="tix3" class="button">TICK-103</div>
         </div>
         <hr/>
         <h3>Team Members Voted</h3>
@@ -125,16 +122,21 @@
 
         socket.on('open tickets', function(data) {
           let i = 0;
+          let $card;
           data.issues.forEach(function (val, key) {
-            var html = '<div id="tix' + i + '" class="button"><h4>'
+            let idString = 'tix' + i;
+            var html = '<div id="' + idString + '" class="button"><h4>'
                 + val.key + '</h4>' + '<p>'+ val.description+ '</p>'+
                 '</div>';
             $('#rootTicket').append(html);
 
-            $('#tix'+i).click(() => {
-              setSelected($('#tix'+i));
-              socket.emit('ticket selected', $('#tix'+i).text())
+            $card = $('#' + idString);
+
+            $card.click(() => {
+              setSelected($card);
+              socket.emit('ticket selected', $('#' + idString + ' h4').text())
             });
+
             i++;
           });
 

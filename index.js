@@ -385,32 +385,32 @@ const tickets = {'TICK-101': 'Description for ticket #102.', 'TICK-102': 'Descri
 
 const userRegistry = [
   {
-    name: michael,
+    name: 'michael',
     admin: false,
     namespaces: ['sr', 'sre']
   },
   {
-    name: abegail,
+    name: 'abegail',
     admin: false,
     namespaces: ['sr']
   },
   {
-    name: amir,
+    name: 'amir',
     admin: false,
     namespaces: ['sr']
   },
   {
-    name: garry,
+    name: 'garry',
     admin: true,
     namespaces: ['sr', 'sre']
   },
   {
-    name: bruce,
+    name: 'bruce',
     admin: true,
     namespaces: ['wis', 'bbd']
   },
   {
-    name: tahir,
+    name: 'tahir',
     admin: false,
     namespaces: ['wis']
   },
