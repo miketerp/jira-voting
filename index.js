@@ -297,7 +297,7 @@ sre.on('connection', function (socket) {
         'Authorization': 'Basic ' + auth
       },
       body: JSON.stringify({
-        'jql': 'project in (test) AND status = Backlog AND labels = VotingTest AND \"Story Points\" = null ORDER BY rank ASC'
+        'jql': 'project in (test) AND status = Backlog AND labels = VotingTest AND \"Story Points\" = -1 ORDER BY rank ASC'
       })
     }).then((res) => {
       openTix['sre'] = JSON.parse(res.getBody('utf-8'));
