@@ -23,7 +23,7 @@
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
-                                    <segue destination="BF4-gb-0SK" kind="show" id="ntL-B2-Co1"/>
+                                    <segue destination="X04-8K-2cf" kind="show" id="ntL-B2-Co1"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -36,8 +36,9 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="x5A-6p-PRh" sceneMemberID="firstResponder"/>
             </objects>
+            <point key="canvasLocation" x="-222" y="123"/>
         </scene>
-        <!--Table View Controller-->
+        <!--Sessions-->
         <scene sceneID="YRz-Iu-XAG">
             <objects>
                 <tableViewController id="BF4-gb-0SK" customClass="TableViewController" sceneMemberID="viewController">
@@ -51,6 +52,10 @@
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="pmN-gt-jmw" id="Fdb-ja-WeV">
                                     <autoresizingMask key="autoresizingMask"/>
                                 </tableViewCellContentView>
+                                <connections>
+                                    <outlet property="accessoryView" destination="eHN-aW-HOv" id="nty-pK-CCu"/>
+                                    <segue destination="TVZ-If-6le" kind="show" identifier="voteTransition" id="3mR-gq-MPW"/>
+                                </connections>
                             </tableViewCell>
                         </prototypes>
                         <connections>
@@ -58,8 +63,156 @@
                             <outlet property="delegate" destination="BF4-gb-0SK" id="uMd-zm-KsP"/>
                         </connections>
                     </tableView>
+                    <navigationItem key="navigationItem" title="Sessions" id="5n8-3U-suU"/>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="WOX-ts-k7N" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1603" y="138"/>
+        </scene>
+        <!--Vote View Controller-->
+        <scene sceneID="ZRE-92-nTd">
+            <objects>
+                <viewController storyboardIdentifier="VoteViewController" id="TVZ-If-6le" customClass="VoteViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="Z2J-5t-VyQ"/>
+                        <viewControllerLayoutGuide type="bottom" id="zed-Ec-mTF"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="Pwf-ox-cOf">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <containerView opaque="NO" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="knQ-gt-MLM">
+                                <rect key="frame" x="36" y="86" width="600" height="600"/>
+                                <connections>
+                                    <segue destination="BvL-qp-kdm" kind="show" id="vNP-Yv-26M"/>
+                                </connections>
+                            </containerView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <toolbarItems/>
+                    <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
+                    <connections>
+                        <outlet property="idLabel" destination="nT4-x2-k6E" id="i6W-u5-why"/>
+                        <outlet property="picker" destination="9mW-kd-vXQ" id="Y80-sl-de5"/>
+                        <outlet property="titleLabel" destination="RSY-uo-EJe" id="l3B-AU-fcm"/>
+                        <outlet property="voteViewHeight" destination="fb5-Pa-ie9" id="fyy-t4-nY2"/>
+                        <outlet property="waitViewHeight" destination="PiF-X4-pvB" id="bG4-HY-D5c"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Ecd-A9-y4f" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2281" y="138"/>
+        </scene>
+        <!--View Controller-->
+        <scene sceneID="Po7-7Y-q7O">
+            <objects>
+                <viewController id="kre-Uf-eKz" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="gxT-cp-qsr"/>
+                        <viewControllerLayoutGuide type="bottom" id="RPg-5R-A3n"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="Wwd-bH-ALg">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="W0Q-RM-UBs" userLabel="Vote View">
+                                <rect key="frame" x="0.0" y="17" width="600" height="569"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" restorationIdentifier="title" text="Title" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="RSY-uo-EJe">
+                                        <rect key="frame" x="271" y="87" width="33" height="21"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Vul-dt-oAg">
+                                        <rect key="frame" x="257" y="514" width="87" height="47"/>
+                                        <state key="normal" title="Vote">
+                                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="vote:" destination="TVZ-If-6le" eventType="touchUpInside" id="R6u-4u-Xln"/>
+                                        </connections>
+                                    </button>
+                                    <pickerView contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="9mW-kd-vXQ">
+                                        <rect key="frame" x="0.0" y="286" width="600" height="162"/>
+                                        <connections>
+                                            <outlet property="dataSource" destination="TVZ-If-6le" id="S3D-Bn-fcb"/>
+                                            <outlet property="delegate" destination="TVZ-If-6le" id="cal-AU-zgh"/>
+                                        </connections>
+                                    </pickerView>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" restorationIdentifier="id" text="ID" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nT4-x2-k6E">
+                                        <rect key="frame" x="279" y="58" width="17" height="21"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="569" id="fb5-Pa-ie9"/>
+                                </constraints>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="cdd-hh-TUu" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2968" y="-181"/>
+        </scene>
+        <!--View Controller-->
+        <scene sceneID="vht-Nx-mqs">
+            <objects>
+                <viewController id="BvL-qp-kdm" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="zA5-ka-YGj"/>
+                        <viewControllerLayoutGuide type="bottom" id="OPI-ln-3jP"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="fmg-g0-Jpx">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="28N-5U-b3D" userLabel="Waiting View">
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" text="Waiting..." textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QRV-m5-gXT">
+                                        <rect key="frame" x="164" y="197" width="272" height="205"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="63"/>
+                                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="centerY" secondItem="QRV-m5-gXT" secondAttribute="centerY" constant="0.5" id="Eif-X7-aNI"/>
+                                    <constraint firstAttribute="height" constant="600" id="PiF-X4-pvB"/>
+                                    <constraint firstAttribute="centerX" secondItem="QRV-m5-gXT" secondAttribute="centerX" id="p5k-2P-mv7"/>
+                                </constraints>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="pkF-Vk-xJH" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2958" y="541"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="Vwx-Oq-hL9">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="X04-8K-2cf" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="sjw-QG-jdl">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="BF4-gb-0SK" kind="relationship" relationship="rootViewController" id="VBo-R9-k90"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="ydp-aH-uoJ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="791" y="138"/>
         </scene>

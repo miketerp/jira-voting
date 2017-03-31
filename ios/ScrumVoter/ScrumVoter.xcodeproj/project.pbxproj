@@ -15,6 +15,7 @@
 		374807251E8DA2DF00B92854 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 374807231E8DA2DF00B92854 /* LaunchScreen.xib */; };
 		374807311E8DA2DF00B92854 /* ScrumVoterTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 374807301E8DA2DF00B92854 /* ScrumVoterTests.m */; };
 		374807451E8DB24F00B92854 /* TableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 374807441E8DB24F00B92854 /* TableViewController.m */; };
+		37F60E691E8DCA2100090B22 /* VoteViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 37F60E681E8DCA2100090B22 /* VoteViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -43,6 +44,8 @@
 		374807301E8DA2DF00B92854 /* ScrumVoterTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ScrumVoterTests.m; sourceTree = "<group>"; };
 		374807431E8DB24F00B92854 /* TableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TableViewController.h; sourceTree = "<group>"; };
 		374807441E8DB24F00B92854 /* TableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TableViewController.m; sourceTree = "<group>"; };
+		37F60E671E8DCA2100090B22 /* VoteViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VoteViewController.h; sourceTree = "<group>"; };
+		37F60E681E8DCA2100090B22 /* VoteViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VoteViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -84,6 +87,8 @@
 		374807131E8DA2DF00B92854 /* ScrumVoter */ = {
 			isa = PBXGroup;
 			children = (
+				37F60E671E8DCA2100090B22 /* VoteViewController.h */,
+				37F60E681E8DCA2100090B22 /* VoteViewController.m */,
 				374807431E8DB24F00B92854 /* TableViewController.h */,
 				374807441E8DB24F00B92854 /* TableViewController.m */,
 				374807181E8DA2DF00B92854 /* AppDelegate.h */,
@@ -224,6 +229,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				37F60E691E8DCA2100090B22 /* VoteViewController.m in Sources */,
 				3748071D1E8DA2DF00B92854 /* ViewController.m in Sources */,
 				3748071A1E8DA2DF00B92854 /* AppDelegate.m in Sources */,
 				374807451E8DB24F00B92854 /* TableViewController.m in Sources */,
@@ -418,6 +424,7 @@
 				374807361E8DA2DF00B92854 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		374807371E8DA2DF00B92854 /* Build configuration list for PBXNativeTarget "ScrumVoterTests" */ = {
 			isa = XCConfigurationList;
@@ -426,6 +433,7 @@
 				374807391E8DA2DF00B92854 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
