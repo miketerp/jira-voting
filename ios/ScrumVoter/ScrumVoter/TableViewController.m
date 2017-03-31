@@ -8,6 +8,8 @@
 
 #import "TableViewController.h"
 #import "VoteViewController.h"
+#import "ProductModuleName-Swift.h"
+@import SocketIO;
 
 @implementation TableViewController
 {

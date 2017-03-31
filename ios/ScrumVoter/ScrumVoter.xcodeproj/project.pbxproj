@@ -15,7 +15,30 @@
 		374807251E8DA2DF00B92854 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 374807231E8DA2DF00B92854 /* LaunchScreen.xib */; };
 		374807311E8DA2DF00B92854 /* ScrumVoterTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 374807301E8DA2DF00B92854 /* ScrumVoterTests.m */; };
 		374807451E8DB24F00B92854 /* TableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 374807441E8DB24F00B92854 /* TableViewController.m */; };
+		37B8B4751E8E27DF0094C112 /* SocketAckEmitter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37B8B4601E8E27DF0094C112 /* SocketAckEmitter.swift */; };
+		37B8B4761E8E27DF0094C112 /* SocketAckManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37B8B4611E8E27DF0094C112 /* SocketAckManager.swift */; };
+		37B8B4771E8E27DF0094C112 /* SocketAnyEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37B8B4621E8E27DF0094C112 /* SocketAnyEvent.swift */; };
+		37B8B4781E8E27DF0094C112 /* SocketClientManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37B8B4631E8E27DF0094C112 /* SocketClientManager.swift */; };
+		37B8B4791E8E27DF0094C112 /* SocketEngine.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37B8B4641E8E27DF0094C112 /* SocketEngine.swift */; };
+		37B8B47A1E8E27DF0094C112 /* SocketEngineClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37B8B4651E8E27DF0094C112 /* SocketEngineClient.swift */; };
+		37B8B47B1E8E27DF0094C112 /* SocketEnginePacketType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37B8B4661E8E27DF0094C112 /* SocketEnginePacketType.swift */; };
+		37B8B47C1E8E27DF0094C112 /* SocketEnginePollable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37B8B4671E8E27DF0094C112 /* SocketEnginePollable.swift */; };
+		37B8B47D1E8E27DF0094C112 /* SocketEngineSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37B8B4681E8E27DF0094C112 /* SocketEngineSpec.swift */; };
+		37B8B47E1E8E27DF0094C112 /* SocketEngineWebsocket.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37B8B4691E8E27DF0094C112 /* SocketEngineWebsocket.swift */; };
+		37B8B47F1E8E27DF0094C112 /* SocketEventHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37B8B46A1E8E27DF0094C112 /* SocketEventHandler.swift */; };
+		37B8B4801E8E27DF0094C112 /* SocketExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37B8B46B1E8E27DF0094C112 /* SocketExtensions.swift */; };
+		37B8B4811E8E27DF0094C112 /* SocketIOClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37B8B46C1E8E27DF0094C112 /* SocketIOClient.swift */; };
+		37B8B4821E8E27DF0094C112 /* SocketIOClientConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37B8B46D1E8E27DF0094C112 /* SocketIOClientConfiguration.swift */; };
+		37B8B4831E8E27DF0094C112 /* SocketIOClientOption.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37B8B46E1E8E27DF0094C112 /* SocketIOClientOption.swift */; };
+		37B8B4841E8E27DF0094C112 /* SocketIOClientSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37B8B46F1E8E27DF0094C112 /* SocketIOClientSpec.swift */; };
+		37B8B4851E8E27DF0094C112 /* SocketIOClientStatus.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37B8B4701E8E27DF0094C112 /* SocketIOClientStatus.swift */; };
+		37B8B4861E8E27DF0094C112 /* SocketLogger.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37B8B4711E8E27DF0094C112 /* SocketLogger.swift */; };
+		37B8B4871E8E27DF0094C112 /* SocketPacket.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37B8B4721E8E27DF0094C112 /* SocketPacket.swift */; };
+		37B8B4881E8E27DF0094C112 /* SocketParsable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37B8B4731E8E27DF0094C112 /* SocketParsable.swift */; };
+		37B8B4891E8E27DF0094C112 /* SocketStringReader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37B8B4741E8E27DF0094C112 /* SocketStringReader.swift */; };
 		37F60E691E8DCA2100090B22 /* VoteViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 37F60E681E8DCA2100090B22 /* VoteViewController.m */; };
+		9616B4C768C9DAEBEE8384D4 /* Pods_ScrumVoter.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F13F5B4D09D1AE6C453AC04F /* Pods_ScrumVoter.framework */; };
+		A1869F858B14CBDEC3A9BA13 /* Pods_ScrumVoterTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E55445AE11B7B047BCA816E3 /* Pods_ScrumVoterTests.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -29,6 +52,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		00A81DA970B87B2DE3E803CD /* Pods-ScrumVoterTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ScrumVoterTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-ScrumVoterTests/Pods-ScrumVoterTests.release.xcconfig"; sourceTree = "<group>"; };
+		365BF827313916C038F626F0 /* Pods-ScrumVoterTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ScrumVoterTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-ScrumVoterTests/Pods-ScrumVoterTests.debug.xcconfig"; sourceTree = "<group>"; };
 		374807111E8DA2DF00B92854 /* ScrumVoter.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ScrumVoter.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		374807151E8DA2DF00B92854 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		374807161E8DA2DF00B92854 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -44,8 +69,34 @@
 		374807301E8DA2DF00B92854 /* ScrumVoterTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ScrumVoterTests.m; sourceTree = "<group>"; };
 		374807431E8DB24F00B92854 /* TableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TableViewController.h; sourceTree = "<group>"; };
 		374807441E8DB24F00B92854 /* TableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TableViewController.m; sourceTree = "<group>"; };
+		37B8B45F1E8E27DE0094C112 /* ScrumVoter-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "ScrumVoter-Bridging-Header.h"; sourceTree = "<group>"; };
+		37B8B4601E8E27DF0094C112 /* SocketAckEmitter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SocketAckEmitter.swift; path = ScrumVoter/Source/SocketAckEmitter.swift; sourceTree = "<group>"; };
+		37B8B4611E8E27DF0094C112 /* SocketAckManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SocketAckManager.swift; path = ScrumVoter/Source/SocketAckManager.swift; sourceTree = "<group>"; };
+		37B8B4621E8E27DF0094C112 /* SocketAnyEvent.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SocketAnyEvent.swift; path = ScrumVoter/Source/SocketAnyEvent.swift; sourceTree = "<group>"; };
+		37B8B4631E8E27DF0094C112 /* SocketClientManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SocketClientManager.swift; path = ScrumVoter/Source/SocketClientManager.swift; sourceTree = "<group>"; };
+		37B8B4641E8E27DF0094C112 /* SocketEngine.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SocketEngine.swift; path = ScrumVoter/Source/SocketEngine.swift; sourceTree = "<group>"; };
+		37B8B4651E8E27DF0094C112 /* SocketEngineClient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SocketEngineClient.swift; path = ScrumVoter/Source/SocketEngineClient.swift; sourceTree = "<group>"; };
+		37B8B4661E8E27DF0094C112 /* SocketEnginePacketType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SocketEnginePacketType.swift; path = ScrumVoter/Source/SocketEnginePacketType.swift; sourceTree = "<group>"; };
+		37B8B4671E8E27DF0094C112 /* SocketEnginePollable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SocketEnginePollable.swift; path = ScrumVoter/Source/SocketEnginePollable.swift; sourceTree = "<group>"; };
+		37B8B4681E8E27DF0094C112 /* SocketEngineSpec.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SocketEngineSpec.swift; path = ScrumVoter/Source/SocketEngineSpec.swift; sourceTree = "<group>"; };
+		37B8B4691E8E27DF0094C112 /* SocketEngineWebsocket.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SocketEngineWebsocket.swift; path = ScrumVoter/Source/SocketEngineWebsocket.swift; sourceTree = "<group>"; };
+		37B8B46A1E8E27DF0094C112 /* SocketEventHandler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SocketEventHandler.swift; path = ScrumVoter/Source/SocketEventHandler.swift; sourceTree = "<group>"; };
+		37B8B46B1E8E27DF0094C112 /* SocketExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SocketExtensions.swift; path = ScrumVoter/Source/SocketExtensions.swift; sourceTree = "<group>"; };
+		37B8B46C1E8E27DF0094C112 /* SocketIOClient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SocketIOClient.swift; path = ScrumVoter/Source/SocketIOClient.swift; sourceTree = "<group>"; };
+		37B8B46D1E8E27DF0094C112 /* SocketIOClientConfiguration.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SocketIOClientConfiguration.swift; path = ScrumVoter/Source/SocketIOClientConfiguration.swift; sourceTree = "<group>"; };
+		37B8B46E1E8E27DF0094C112 /* SocketIOClientOption.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SocketIOClientOption.swift; path = ScrumVoter/Source/SocketIOClientOption.swift; sourceTree = "<group>"; };
+		37B8B46F1E8E27DF0094C112 /* SocketIOClientSpec.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SocketIOClientSpec.swift; path = ScrumVoter/Source/SocketIOClientSpec.swift; sourceTree = "<group>"; };
+		37B8B4701E8E27DF0094C112 /* SocketIOClientStatus.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SocketIOClientStatus.swift; path = ScrumVoter/Source/SocketIOClientStatus.swift; sourceTree = "<group>"; };
+		37B8B4711E8E27DF0094C112 /* SocketLogger.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SocketLogger.swift; path = ScrumVoter/Source/SocketLogger.swift; sourceTree = "<group>"; };
+		37B8B4721E8E27DF0094C112 /* SocketPacket.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SocketPacket.swift; path = ScrumVoter/Source/SocketPacket.swift; sourceTree = "<group>"; };
+		37B8B4731E8E27DF0094C112 /* SocketParsable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SocketParsable.swift; path = ScrumVoter/Source/SocketParsable.swift; sourceTree = "<group>"; };
+		37B8B4741E8E27DF0094C112 /* SocketStringReader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SocketStringReader.swift; path = ScrumVoter/Source/SocketStringReader.swift; sourceTree = "<group>"; };
 		37F60E671E8DCA2100090B22 /* VoteViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VoteViewController.h; sourceTree = "<group>"; };
 		37F60E681E8DCA2100090B22 /* VoteViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VoteViewController.m; sourceTree = "<group>"; };
+		6DB46C6C9392DEA9EAEE48C6 /* Pods-ScrumVoter.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ScrumVoter.release.xcconfig"; path = "Pods/Target Support Files/Pods-ScrumVoter/Pods-ScrumVoter.release.xcconfig"; sourceTree = "<group>"; };
+		7C8B0F561E58F3CF37AE9599 /* Pods-ScrumVoter.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ScrumVoter.debug.xcconfig"; path = "Pods/Target Support Files/Pods-ScrumVoter/Pods-ScrumVoter.debug.xcconfig"; sourceTree = "<group>"; };
+		E55445AE11B7B047BCA816E3 /* Pods_ScrumVoterTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ScrumVoterTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		F13F5B4D09D1AE6C453AC04F /* Pods_ScrumVoter.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ScrumVoter.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -53,6 +104,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9616B4C768C9DAEBEE8384D4 /* Pods_ScrumVoter.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -60,18 +112,42 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A1869F858B14CBDEC3A9BA13 /* Pods_ScrumVoterTests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		0F2A12C35441702B5BB66414 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				F13F5B4D09D1AE6C453AC04F /* Pods_ScrumVoter.framework */,
+				E55445AE11B7B047BCA816E3 /* Pods_ScrumVoterTests.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		1C16C6E5398FA8B8436772F9 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				7C8B0F561E58F3CF37AE9599 /* Pods-ScrumVoter.debug.xcconfig */,
+				6DB46C6C9392DEA9EAEE48C6 /* Pods-ScrumVoter.release.xcconfig */,
+				365BF827313916C038F626F0 /* Pods-ScrumVoterTests.debug.xcconfig */,
+				00A81DA970B87B2DE3E803CD /* Pods-ScrumVoterTests.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
 		374807081E8DA2DF00B92854 = {
 			isa = PBXGroup;
 			children = (
+				37B8B45E1E8E27BC0094C112 /* Source */,
 				374807131E8DA2DF00B92854 /* ScrumVoter */,
 				3748072D1E8DA2DF00B92854 /* ScrumVoterTests */,
 				374807121E8DA2DF00B92854 /* Products */,
+				1C16C6E5398FA8B8436772F9 /* Pods */,
+				0F2A12C35441702B5BB66414 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -129,6 +205,35 @@
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
+		37B8B45E1E8E27BC0094C112 /* Source */ = {
+			isa = PBXGroup;
+			children = (
+				37B8B4601E8E27DF0094C112 /* SocketAckEmitter.swift */,
+				37B8B4611E8E27DF0094C112 /* SocketAckManager.swift */,
+				37B8B4621E8E27DF0094C112 /* SocketAnyEvent.swift */,
+				37B8B4631E8E27DF0094C112 /* SocketClientManager.swift */,
+				37B8B4641E8E27DF0094C112 /* SocketEngine.swift */,
+				37B8B4651E8E27DF0094C112 /* SocketEngineClient.swift */,
+				37B8B4661E8E27DF0094C112 /* SocketEnginePacketType.swift */,
+				37B8B4671E8E27DF0094C112 /* SocketEnginePollable.swift */,
+				37B8B4681E8E27DF0094C112 /* SocketEngineSpec.swift */,
+				37B8B4691E8E27DF0094C112 /* SocketEngineWebsocket.swift */,
+				37B8B46A1E8E27DF0094C112 /* SocketEventHandler.swift */,
+				37B8B46B1E8E27DF0094C112 /* SocketExtensions.swift */,
+				37B8B46C1E8E27DF0094C112 /* SocketIOClient.swift */,
+				37B8B46D1E8E27DF0094C112 /* SocketIOClientConfiguration.swift */,
+				37B8B46E1E8E27DF0094C112 /* SocketIOClientOption.swift */,
+				37B8B46F1E8E27DF0094C112 /* SocketIOClientSpec.swift */,
+				37B8B4701E8E27DF0094C112 /* SocketIOClientStatus.swift */,
+				37B8B4711E8E27DF0094C112 /* SocketLogger.swift */,
+				37B8B4721E8E27DF0094C112 /* SocketPacket.swift */,
+				37B8B4731E8E27DF0094C112 /* SocketParsable.swift */,
+				37B8B4741E8E27DF0094C112 /* SocketStringReader.swift */,
+				37B8B45F1E8E27DE0094C112 /* ScrumVoter-Bridging-Header.h */,
+			);
+			name = Source;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -136,9 +241,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 374807341E8DA2DF00B92854 /* Build configuration list for PBXNativeTarget "ScrumVoter" */;
 			buildPhases = (
+				ADD3F94F2779D188FFDF1471 /* [CP] Check Pods Manifest.lock */,
 				3748070D1E8DA2DF00B92854 /* Sources */,
 				3748070E1E8DA2DF00B92854 /* Frameworks */,
 				3748070F1E8DA2DF00B92854 /* Resources */,
+				98A5BD6A61ED23F93EB853F8 /* [CP] Embed Pods Frameworks */,
+				E0B4DBB830459FD67AE73DC8 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -153,9 +261,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 374807371E8DA2DF00B92854 /* Build configuration list for PBXNativeTarget "ScrumVoterTests" */;
 			buildPhases = (
+				0AD9CBF8A21A7E106CEC71DA /* [CP] Check Pods Manifest.lock */,
 				374807261E8DA2DF00B92854 /* Sources */,
 				374807271E8DA2DF00B92854 /* Frameworks */,
 				374807281E8DA2DF00B92854 /* Resources */,
+				73FA86CD7429D787D18E5050 /* [CP] Embed Pods Frameworks */,
+				6A564988596CF73419360282 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -224,16 +335,130 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		0AD9CBF8A21A7E106CEC71DA /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		6A564988596CF73419360282 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-ScrumVoterTests/Pods-ScrumVoterTests-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		73FA86CD7429D787D18E5050 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-ScrumVoterTests/Pods-ScrumVoterTests-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		98A5BD6A61ED23F93EB853F8 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-ScrumVoter/Pods-ScrumVoter-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		ADD3F94F2779D188FFDF1471 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		E0B4DBB830459FD67AE73DC8 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-ScrumVoter/Pods-ScrumVoter-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		3748070D1E8DA2DF00B92854 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 				37F60E691E8DCA2100090B22 /* VoteViewController.m in Sources */,
+				37B8B4821E8E27DF0094C112 /* SocketIOClientConfiguration.swift in Sources */,
 				3748071D1E8DA2DF00B92854 /* ViewController.m in Sources */,
+				37B8B4781E8E27DF0094C112 /* SocketClientManager.swift in Sources */,
+				37B8B47A1E8E27DF0094C112 /* SocketEngineClient.swift in Sources */,
+				37B8B47B1E8E27DF0094C112 /* SocketEnginePacketType.swift in Sources */,
+				37B8B4771E8E27DF0094C112 /* SocketAnyEvent.swift in Sources */,
+				37B8B4841E8E27DF0094C112 /* SocketIOClientSpec.swift in Sources */,
 				3748071A1E8DA2DF00B92854 /* AppDelegate.m in Sources */,
+				37B8B4751E8E27DF0094C112 /* SocketAckEmitter.swift in Sources */,
+				37B8B4791E8E27DF0094C112 /* SocketEngine.swift in Sources */,
+				37B8B4811E8E27DF0094C112 /* SocketIOClient.swift in Sources */,
+				37B8B4891E8E27DF0094C112 /* SocketStringReader.swift in Sources */,
+				37B8B47E1E8E27DF0094C112 /* SocketEngineWebsocket.swift in Sources */,
+				37B8B47D1E8E27DF0094C112 /* SocketEngineSpec.swift in Sources */,
+				37B8B4801E8E27DF0094C112 /* SocketExtensions.swift in Sources */,
+				37B8B4851E8E27DF0094C112 /* SocketIOClientStatus.swift in Sources */,
+				37B8B4831E8E27DF0094C112 /* SocketIOClientOption.swift in Sources */,
+				37B8B4861E8E27DF0094C112 /* SocketLogger.swift in Sources */,
 				374807451E8DB24F00B92854 /* TableViewController.m in Sources */,
+				37B8B47F1E8E27DF0094C112 /* SocketEventHandler.swift in Sources */,
+				37B8B4881E8E27DF0094C112 /* SocketParsable.swift in Sources */,
 				374807171E8DA2DF00B92854 /* main.m in Sources */,
+				37B8B4761E8E27DF0094C112 /* SocketAckManager.swift in Sources */,
+				37B8B4871E8E27DF0094C112 /* SocketPacket.swift in Sources */,
+				37B8B47C1E8E27DF0094C112 /* SocketEnginePollable.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -353,26 +578,34 @@
 		};
 		374807351E8DA2DF00B92854 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 7C8B0F561E58F3CF37AE9599 /* Pods-ScrumVoter.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				INFOPLIST_FILE = ScrumVoter/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "ScrumVoter-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 			};
 			name = Debug;
 		};
 		374807361E8DA2DF00B92854 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 6DB46C6C9392DEA9EAEE48C6 /* Pods-ScrumVoter.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				INFOPLIST_FILE = ScrumVoter/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "ScrumVoter-Bridging-Header.h";
 			};
 			name = Release;
 		};
 		374807381E8DA2DF00B92854 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 365BF827313916C038F626F0 /* Pods-ScrumVoterTests.debug.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				FRAMEWORK_SEARCH_PATHS = (
@@ -392,6 +625,7 @@
 		};
 		374807391E8DA2DF00B92854 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 00A81DA970B87B2DE3E803CD /* Pods-ScrumVoterTests.release.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				FRAMEWORK_SEARCH_PATHS = (

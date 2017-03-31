@@ -1,0 +1,6 @@
+framework module Pods_ScrumVoter {
+  umbrella header "Pods-ScrumVoter-umbrella.h"
+
+  export *
+  module * { export * }
+}

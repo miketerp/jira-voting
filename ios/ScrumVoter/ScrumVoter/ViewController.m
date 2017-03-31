@@ -7,6 +7,8 @@
 //
 
 #import "ViewController.h"
+#import "ProductModuleName-Swift.h"
+@import SocketIO;
 
 @interface ViewController ()
 

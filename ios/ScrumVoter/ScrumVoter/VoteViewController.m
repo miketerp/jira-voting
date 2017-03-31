@@ -7,6 +7,8 @@
 //
 
 #import "VoteViewController.h"
+#import "ProductModuleName-Swift.h"
+@import SocketIO;
 
 @interface VoteViewController ()
     @property (nonatomic, weak) IBOutlet UILabel *idLabel;
