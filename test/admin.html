@@ -29,9 +29,9 @@
   <div id="sre-btn" class="button">SRE</div>
   <hr/>
   <h3 id="ticket">Current Ticket:</h3>
-  <div id="tix1" class="button">TICKET-101</div>
-  <div id="tix2" class="button">TICKET-102</div>
-  <div id="tix3" class="button">TICKET-103</div>
+  <div id="tix1" class="button">TICK-101</div>
+  <div id="tix2" class="button">TICK-102</div>
+  <div id="tix3" class="button">TICK-103</div>
   <hr/>
   <h3>Team Members Voted</h3>
   <ul id="voters"></ul>
@@ -42,12 +42,13 @@
       let socket = undefined;
 
       $('#sr-btn').click(() => setNameSpace('searchandiser', $('#sr-btn')));
-
       $('#wis-btn').click(() => setNameSpace('wisdom', $('#wis-btn')));
-
       $('#sre-btn').click(() => setNameSpace('site-reliability', $('#sre-btn')));
-
       $('#bbd-btn').click(() => setNameSpace('storefront', $('#bbd-btn')));
+
+      $('#tix1').click(() => socket.emit('ticket selected', $('#tix1').text()));
+      $('#tix2').click(() => socket.emit('ticket selected', $('#tix2').text()));
+      $('#tix3').click(() => socket.emit('ticket selected', $('#tix3').text()));
 
       const setNameSpace = (ns, $this) => {
         socket = io('/' + ns);
@@ -68,7 +69,6 @@
         });
       }
     });
-
   </script>
 </body>
 </html>

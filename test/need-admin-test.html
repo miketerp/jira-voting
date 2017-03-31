@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Namespace Test v0.0.1</title>
+  <script src="/socket.io/socket.io.js"></script>
+  <script src="https://code.jquery.com/jquery-1.11.1.js"></script>
+  <style>
+    .button {
+      height: 50px;
+      width: 100px;
+      background-color: cornflowerblue;
+      color: #d9deff;
+      font-size: 1.5em;
+      border: solid 1px black;
+      display: block;
+      margin: 10px;
+    }
+    .selected {
+      background-color: darkred;
+    }
+    .hidden {
+      display: none;
+    }
+  </style></head>
+<body>
+<h3 id="team">Current Team:</h3>
+<div id="sr-btn" class="button">SR</div>
+<div id="wis-btn" class="button">WIS</div>
+<div id="bbd-btn" class="button">BBD</div>
+<div id="sre-btn" class="button">SRE</div>
+
+<div id="vote-area" class="hidden">
+  <label>Name:</label><input id="name" type="text" size="20"/>
+  <label>Vote:</label><input id="vote" type="text" size="20"/>
+  <div id="vote-button" class="button">VOTE</div>
+  <div id="t-info">
+    <h4 id="t-name"></h4>
+    <p id="t-desc"></p>
+  </div>
+</div>
+<div id="results" class="hidden">
+  <p id="response"></p>
+</div>
+
+<script>
+  $(function () {
+
+    let socket = undefined;
+
+    $('#vote-button').click(function(){
+      if (socket) {
+        socket.emit('vote', {vote: $('#vote').val(), name: $('#name').val()});
+      }
+    });
+
+    $('#sr-btn').click(() => setNameSpace('searchandiser', $('#sr-btn')));
+
+    $('#wis-btn').click(() => setNameSpace('wisdom', $('#wis-btn')));
+
+    $('#sre-btn').click(() => setNameSpace('site-reliability', $('#sre-btn')));
+
+    $('#bbd-btn').click(() => setNameSpace('storefront', $('#bbd-btn')));
+
+    const setNameSpace = (ns, $this) => {
+      if (socket) socket.disconnect();
+      socket = io('/' + ns);
+      $('#team').text('Current Team: ' + ns);
+      $('.selected').removeClass('selected');
+      $this.addClass('selected');
+
+      socket.on('response', function(msg){
+        $('#voting-area').addClass('hidden');
+        $('#results').removeClass('hidden');
+        $('#response').text(msg);
+      });
+
+      socket.on('ticket', function(data) {
+        $('#results').addClass('hidden');
+        $('#vote-area').removeClass('hidden');
+        $('#t-name').text(data.title);
+        $('#t-desc').text(data.description);
+      });
+    }
+  });
+</script>
+</body>
+</html>

@@ -23,6 +23,10 @@ app.get('/admin', function (req, res) {
   res.sendFile(__dirname + '/test/admin.html');
 });
 
+app.get('/need-admin', function (req, res) {
+  res.sendFile(__dirname + '/test/need-admin-test.html');
+});
+
 app.get('/basic-test', function (req, res) {
   res.sendFile(__dirname + '/test/index.html');
 });
@@ -35,14 +39,9 @@ app.get('/name-test', function (req, res) {
  * SOCKET.IO NAMESPACES
  */
 
-// DEFAULT namespace
+// DEFAULT namespace - should do nothing.
 io.on('connection', function (socket) {
   console.log('connection established');
-
-  socket.on('vote', function (data) {
-    console.log(data);
-    io.emit('response', data);
-  });
 
   socket.on('disconnect', function () {
     console.log('user disconnected');
@@ -62,7 +61,15 @@ sr.on('connection', function (socket) {
 
   socket.on('adminIsIn', function () {
     console.log('Administrator has logged into SR');
-    srUsers[this.id] = { admin: true };
+    srUsers[this.id] = {admin: true};
+  });
+
+  socket.on('ticket selected', function (tname) {
+    console.log('Administrator has started a ticket');
+    let admin = hasAdmin(srUsers);
+    console.log('Admin: ' + admin);
+    srUsers[admin]['ticket'] = tname;
+    sr.emit('ticket', { title: tname, description: tickets[tname] });
   });
 
   socket.on('vote', function (data) {
@@ -70,18 +77,23 @@ sr.on('connection', function (socket) {
     const msg        = data.name + ' on Searchandiser voted ' + data.vote;
     console.log(msg);
 
-    let admin = hasAdmin(bbdUsers)
+    let admin = hasAdmin(bbdUsers);
     console.log('Admin: ' + admin);
     if (admin) {
       bbd.to(admin).emit('voter voted', data.name + ': ' + data.vote);
     }
 
-    // time to tally the votes?
     let voteTotal = votesAreIn(srUsers);
     console.log(voteTotal);
     if (voteTotal) {
       for (let key in srUsers) {
-        sr.to(key).emit('response', 'All the votes are in! You voted ' + srUsers[key].vote + ', result was ' + voteTotal + '.');
+        if (key != admin) {
+          sr.to(key).emit('response', 'All the votes are in! You voted ' + srUsers[key].vote + ', result was ' + voteTotal + '.');
+          srUsers[key].vote = undefined;
+        } else {
+          sr.to(key).emit('response', 'All the votes are in! Your team voted ' + voteTotal + ' on ' + srUsers[key].ticket + '.');
+          srUsers[key].ticket = undefined;
+        }
       }
     }
   });
@@ -100,7 +112,15 @@ bbd.on('connection', function (socket) {
 
   socket.on('adminIsIn', function () {
     console.log('Administrator has logged into BBD');
-    bbdUsers[this.id] = { admin: true };
+    bbdUsers[this.id] = {admin: true};
+  });
+
+  socket.on('ticket selected', function (tname) {
+    console.log('Administrator has started a ticket');
+    let admin = hasAdmin(bbdUsers);
+    console.log('Admin: ' + admin);
+    bbdUsers[admin]['ticket'] = tname;
+    bbd.emit('ticket', { title: tname, description: tickets[tname] });
   });
 
   socket.on('vote', function (data) {
@@ -114,12 +134,17 @@ bbd.on('connection', function (socket) {
       bbd.to(admin).emit('voter voted', data.name + ': ' + data.vote);
     }
 
-    // time to tally the votes?
     let voteTotal = votesAreIn(bbdUsers);
     console.log(voteTotal);
     if (voteTotal) {
       for (let key in bbdUsers) {
-        bbd.to(key).emit('response', 'All the votes are in! You voted ' + bbdUsers[key].vote + ', result was ' + voteTotal + '.');
+        if (key != admin) {
+          bbd.to(key).emit('response', 'All the votes are in! You voted ' + bbdUsers[key].vote + ', result was ' + voteTotal + '.');
+          bbdUsers[key].vote = undefined;
+        } else {
+          bbd.to(key).emit('response', 'All the votes are in! Your team voted ' + voteTotal + ' on ' + bbdUsers[key].ticket + '.');
+          bbdUsers[key].ticket = undefined;
+        }
       }
     }
   });
@@ -138,7 +163,15 @@ wis.on('connection', function (socket) {
 
   socket.on('adminIsIn', function () {
     console.log('Administrator has logged into WIS');
-    srUsers[this.id] = { admin: true };
+    srUsers[this.id] = {admin: true};
+  });
+
+  socket.on('ticket selected', function (tname) {
+    console.log('Administrator has started a ticket');
+    let admin = hasAdmin(wisUsers);
+    console.log('Admin: ' + admin);
+    wisUsers[admin]['ticket'] = tname;
+    wis.emit('ticket', { title: tname, description: tickets[tname] });
   });
 
   socket.on('vote', function (data) {
@@ -146,10 +179,10 @@ wis.on('connection', function (socket) {
     const msg         = data.name + ' on Wisdom voted ' + data.vote;
     console.log(msg);
 
-    let admin = hasAdmin(bbdUsers)
+    let admin = hasAdmin(wisUsers)
     console.log('Admin: ' + admin);
     if (admin) {
-      bbd.to(admin).emit('voter voted', data.name + ': ' + data.vote);
+      wis.to(admin).emit('voter voted', data.name + ': ' + data.vote);
     }
 
     // time to tally the votes?
@@ -157,7 +190,13 @@ wis.on('connection', function (socket) {
     console.log(voteTotal);
     if (voteTotal) {
       for (let key in wisUsers) {
-        wis.to(key).emit('response', 'All the votes are in! You voted ' + wisUsers[key].vote + ', result was ' + voteTotal + '.');
+        if (key != admin) {
+          wis.to(key).emit('response', 'All the votes are in! You voted ' + wisUsers[key].vote + ', result was ' + voteTotal + '.');
+          wisUsers[key].vote = undefined;
+        } else {
+          wis.to(key).emit('response', 'All the votes are in! Your team voted ' + voteTotal + ' on ' + wisUsers[key].ticket + '.');
+          wisUsers[key].ticket = undefined;
+        }
       }
     }
   });
@@ -176,26 +215,39 @@ sre.on('connection', function (socket) {
 
   socket.on('adminIsIn', function () {
     console.log('Administrator has logged into SRE');
-    srUsers[this.id] = { admin: true };
+    sreUsers[this.id] = {admin: true};
+  });
+
+  socket.on('ticket selected', function (tname) {
+    console.log('Administrator has started a ticket');
+    let admin = hasAdmin(sreUsers);
+    console.log('Admin: ' + admin);
+    sreUsers[admin]['ticket'] = tname;
+    sre.emit('ticket', { title: tname, description: tickets[tname] });
   });
 
   socket.on('vote', function (data) {
     sreUsers[this.id] = {name: data.name, vote: data.vote, admin: false};
-    const msg = data.name + ' on SRE voted ' + data.vote;
+    const msg         = data.name + ' on SRE voted ' + data.vote;
     console.log(msg);
 
-    let admin = hasAdmin(bbdUsers)
+    let admin = hasAdmin(sreUsers)
     console.log('Admin: ' + admin);
     if (admin) {
-      bbd.to(admin).emit('voter voted', data.name + ': ' + data.vote);
+      sre.to(admin).emit('voter voted', data.name + ': ' + data.vote);
     }
 
-    // time to tally the votes?
     let voteTotal = votesAreIn(sreUsers);
     console.log(voteTotal);
     if (voteTotal) {
       for (let key in sreUsers) {
-        sre.to(key).emit('response', 'All the votes are in! You voted ' + sreUsers[key].vote + ', result was ' + voteTotal + '.');
+        if (key != admin) {
+          sre.to(key).emit('response', 'All the votes are in! You voted ' + sreUsers[key].vote + ', result was ' + voteTotal + '.');
+          sreUsers[key].vote = undefined;
+        } else {
+          sre.to(key).emit('response', 'All the votes are in! Your team voted ' + voteTotal + ' on ' + sreUsers[key].ticket + '.');
+          sreUsers[key].ticket = undefined;
+        }
       }
     }
   });
@@ -216,7 +268,7 @@ const votesAreIn = (users) => {
     }
   }
   console.log('Total: ' + total);
-  return Math.round(total / Object.keys(users).length);
+  return Math.round(hasAdmin(users) ? total / (Object.keys(users).length - 1) : total / Object.keys(users).length);
 };
 
 const hasAdmin = (users) => {
@@ -227,4 +279,10 @@ const hasAdmin = (users) => {
   }
   return false;
 };
+
+/**
+ *  A FAKE DATA SOURCE TO BE DELETED
+ */
+
+const tickets = {'TICK-101': 'Description for ticket #102.', 'TICK-102': 'Description for ticket #102.', 'TICK-103': 'Description for ticket #103.'};
 
