@@ -50,7 +50,7 @@
             </objects>
             <point key="canvasLocation" x="-222" y="123"/>
         </scene>
-        <!--Sessions-->
+        <!--Namespaces-->
         <scene sceneID="YRz-Iu-XAG">
             <objects>
                 <tableViewController id="BF4-gb-0SK" customClass="TableViewController" sceneMemberID="viewController">
@@ -75,7 +75,7 @@
                             <outlet property="delegate" destination="BF4-gb-0SK" id="uMd-zm-KsP"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="Sessions" id="5n8-3U-suU"/>
+                    <navigationItem key="navigationItem" title="Namespaces" id="5n8-3U-suU"/>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="WOX-ts-k7N" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

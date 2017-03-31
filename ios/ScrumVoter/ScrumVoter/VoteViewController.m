@@ -27,6 +27,7 @@
 {
     [super viewDidLoad];
     // Initialize table data
+    
     [self updateTicketWithId:@"SR-400" withTitle:@"Build this App" withValues:[NSArray arrayWithObjects:@"1", @"2", @"3", @"5", @"8", @"13", @"21", nil]];
 }
 
@@ -57,6 +58,8 @@
     [self.button setHidden:YES];
     
     [self.waitLabel setHidden:NO];
+    
+//    [self updateTicketWithId:@"SR-421" withTitle:@"Beat Jerome at foosball" withValues:[NSArray arrayWithObjects:@"1", @"2", @"3", @"5", @"8", @"13", @"21", nil]];
 }
 
 -(void)updateTicketWithId:(NSString*)ticketId withTitle:(NSString*)ticketTitle withValues:(NSArray*)values
