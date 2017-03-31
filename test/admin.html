@@ -8,8 +8,6 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/foundation/5.5.3/css/foundation.min.css">
   <style>
     .button {
-      height: 50px;
-      width: 125px;
       background-color: cornflowerblue;
       color: #d9deff;
       font-size: 1.5em;
@@ -32,10 +30,10 @@
       <div class="row">
         <div class="large-12 columns">
           <h3 id="team">Current Team:</h3>
-          <div id="sr-btn" class="button">SR</div>
-          <div id="wis-btn" class="button">WIS</div>
-          <div id="bbd-btn" class="button">BBD</div>
-          <div id="sre-btn" class="button">SRE</div>
+          <button id="sr-btn">SR</button>
+          <button id="wis-btn">WIS</button>
+          <button id="bbd-btn">BBD</button>
+          <button id="sre-btn">SRE</button>
         </div>
       </div>
 
@@ -64,10 +62,11 @@
       <div id="ticketContainer" style="display: none;">
         <hr/>
         <h3 id="ticket">Current Ticket:</h3>
-        <div id="tix1" class="button">TICK-101</div>
-        <div id="tix2" class="button">TICK-102</div>
-        <div id="tix3" class="button">TICK-103</div>
-
+        <div id="rootTicket">
+          <div id="tix1" class="button">TICK-101</div>
+          <div id="tix2" class="button">TICK-102</div>
+          <div id="tix3" class="button">TICK-103</div>
+        </div>
         <hr/>
         <h3>Team Members Voted</h3>
         <div>
@@ -86,21 +85,6 @@
       $('#sre-btn').click(() => setNameSpace('site-reliability', $('#sre-btn')));
       $('#bbd-btn').click(() => setNameSpace('storefront', $('#bbd-btn')));
 
-      $('#tix1').click(() => {
-        setSelected($('#tix1'));
-        socket.emit('ticket selected', $('#tix1').text())
-      });
-
-      $('#tix2').click(() => {
-        setSelected($('#tix2'));
-        socket.emit('ticket selected', $('#tix2').text())
-      });
-
-      $('#tix3').click(() => {
-        setSelected($('#tix3'));
-        socket.emit('ticket selected', $('#tix3').text())
-      });
-
       $('#hidePanel').click(() => {
         $('#login-panel').css("display", "none");
         var a = $('#username').val();
@@ -110,9 +94,6 @@
 
       const sendToken = (token) => {
         socket.emit('get open tickets', token);
-        console.log('sent token');
-        console.log('Authenticated ...');
-        $('#ticketContainer').css('display', 'inline');
       }
 
       const setSelected = ($this) => {
@@ -143,7 +124,22 @@
         });
 
         socket.on('open tickets', function(data) {
-          console.log('lol', data);
+          let i = 0;
+          data.issues.forEach(function (val, key) {
+            var html = '<div id="tix' + i + '" class="button"><h4>'
+                + val.key + '</h4>' + '<p>'+ val.description+ '</p>'+
+                '</div>';
+            $('#rootTicket').append(html);
+
+            $('#tix'+i).click(() => {
+              setSelected($('#tix'+i));
+              socket.emit('ticket selected', $('#tix'+i).text())
+            });
+            i++;
+          });
+
+
+          $('#ticketContainer').css('display', 'inline');
         });
       }
     });

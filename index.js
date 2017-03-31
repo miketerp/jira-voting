@@ -288,23 +288,29 @@ sre.on('connection', function (socket) {
 
   socket.on('get open tickets', function (auth) {
     console.log(auth);
-    request('GET', 'https://issues.groupbyinc.com/rest/api/2/search', {
+    request('POST', 'https://issues.groupbyinc.com/rest/api/2/search', {
       headers: {
         'Content-type': 'application/json',
         'Authorization': 'Basic ' + auth
-      }
+      },
+      body: JSON.stringify({
+        'jql': 'project in (test) AND status = Backlog AND labels = VotingTest AND \"Story Points\" = null ORDER BY rank ASC'
+      })
     }).then((res) => {
-      openTix.sre = res.getBody('utf-8');
+      openTix['sre'] = JSON.parse(res.getBody('utf-8'));
+
       let tix = [];
-      for (let t in openTix.sre) {
+
+      openTix['sre'].issues.forEach(function(val, key) {
         tix.push({
-          key: t.key,
-          summary: t.fields.summary,
-          description: t.fields.description,
-          priority: t.fields.priority.name,
-          status: t.fields.status.name
+          key: val.key,
+          summary: val.fields.summary,
+          description: val.fields.description,
+          priority: val.fields.priority.name,
+          status: val.fields.status.name
         });
-      }
+      });
+
       sre.emit('open tickets', { issues: tix, total: tix.length });
     });
   });
