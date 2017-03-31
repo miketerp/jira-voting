@@ -18,8 +18,10 @@ public class MockServer {
 
     public static final String [] namepaces = {SR, SRE, BBD, WIS, SC};
 
-    private String namespace = "";
+    public static String namespace = "";
     public static int n = 0;
+
+    public static int position = 0;
 
     public updateVotes getTask() {
         return new updateVotes();
@@ -55,7 +57,7 @@ public class MockServer {
             Thread.sleep(2000);
             namespace = ns;
             n = 0;
-            VoteActivity.updatePage(getTicket(namespace));
+            VoteActivity.updatePage(getTicket());
         }
 
         protected void onProgressUpdate(Integer... progress) {
@@ -71,7 +73,7 @@ public class MockServer {
             Thread.sleep(10000);
             namespace = ns;
             n = 0;
-            VoteActivity.updatePage(getTicket(namespace));
+            VoteActivity.updatePage(getTicket());
         }
 
         protected void onProgressUpdate(Integer... progress) {
@@ -87,7 +89,7 @@ public class MockServer {
             }
             namespace = params[0];
             n = 0;
-            VoteActivity.updatePage(getTicket(namespace));
+            VoteActivity.updatePage(getTicket());
             return null;
         }
 
@@ -95,22 +97,28 @@ public class MockServer {
         }
     }
 
-    public static String getTicket(String nspace) {
-        String result;
+    public static String getTicket() {
+        String result = "GBI";
 
-        switch (nspace) {
-            case SR:
+        switch (position) {
+            case 0:
                 result = "SR";
-            case SRE:
+                break;
+            case 1:
                 result = "SRE";
-            case BBD:
+                break;
+            case 2:
                 result = "BBD";
-            case WIS:
+                break;
+            case 3:
                 result = "WIS";
-            case SC:
+                break;
+            case 4:
                 result = "SC";
+                break;
             default:
                 result = "SR";
+                break;
         }
 
         n++;
@@ -125,13 +133,13 @@ public class MockServer {
             case 1:
                 return "Make CC great again.";
             case 2:
-                return "Make CC great again.";
+                return "Do stuff.";
             case 3:
-                return "Make CC great again.";
+                return "500 errors and stuff.";
             case 4:
-                return "Make CC great again.";
+                return "Sitemaps :(";
             case 5:
-                return "Make CC great again.";
+                return "Templates yo.";
             default:
                 return "Hackathons are fun.";
         }

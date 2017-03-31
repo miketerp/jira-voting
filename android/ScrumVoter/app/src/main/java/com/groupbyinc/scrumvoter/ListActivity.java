@@ -51,6 +51,7 @@ public class ListActivity extends AppCompatActivity {
         OnItemClickListener itemClickListener = new OnItemClickListener() {
             public void onItemClick(AdapterView parent, View v, int position, long id) {
                 socket.send("Namespace:" + sessionsArray[position]);
+                MockServer.position = position;
                 Intent voteActivityIntent = new Intent(parent.getContext(), VoteActivity.class);
                 startActivity(voteActivityIntent);
             }

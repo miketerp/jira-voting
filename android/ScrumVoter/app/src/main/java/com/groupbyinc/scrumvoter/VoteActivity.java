@@ -33,15 +33,6 @@ public class VoteActivity extends AppCompatActivity {
     static private NumberPicker picker;
     Socket socket;
 
-    final Handler handler = new Handler();
-    handler.postDelayed(new Runnable() {
-        @Override
-        public void run() {
-            // Do something after 5s = 5000ms
-            buttons[inew][jnew].setBackgroundColor(Color.BLACK);
-        }
-    }, 5000);
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -61,11 +52,7 @@ public class VoteActivity extends AppCompatActivity {
 //                socket.send("Vote:" + value);
                 votingLayout.setVisibility(View.GONE);
                 waitingLayout.setVisibility(View.VISIBLE);
-                try {
-                    server();
-                } catch (InterruptedException e) {
-                    e.printStackTrace();
-                }
+                doIt();
             }
         });
 
@@ -92,11 +79,9 @@ public class VoteActivity extends AppCompatActivity {
         }
 
         MockServer.n = 0;
-        try {
-            server();
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
+        doIt();
+
+
 
 //        updateViews("SR - 400", "Build stuff for the Hackathon and now with overflow text", new int [] {1,2,3,5,8,13});
     }
@@ -162,6 +147,16 @@ public class VoteActivity extends AppCompatActivity {
 
     private void server() throws InterruptedException {
         Thread.sleep(10000);
-        updatePage(MockServer.getTicket(MockServer.SR));
+        updatePage(MockServer.getTicket());
+    }
+
+    private void doIt() {
+        final Handler handler = new Handler();
+        handler.postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                updatePage(MockServer.getTicket());
+            }
+        }, 10000);
     }
 }
