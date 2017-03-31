@@ -12,13 +12,14 @@
 @implementation TableViewController
 {
     NSArray *tableData;
+//    NSInteger index;
 }
 
 - (void)viewDidLoad
 {
     [super viewDidLoad];
     // Initialize table data
-    tableData = [NSArray arrayWithObjects:@"Searchendiser", @"SRE", @"Storefront", @"Wisdom", @"Shopping Cart", @"Services", nil];
+    tableData = [NSArray arrayWithObjects:@"Searchendiser", @"SRE", @"Storefront", @"Wisdom", @"Shopping Cart", nil];
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
@@ -42,13 +43,22 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
+//    index = indexPath.row;
     [self performSegueWithIdentifier:@"voteTransition" sender:self];
     
 }
 
-- (void)prepareForSegue:(UIStoryboardSegue *)segue
-                 sender:(id)sender {
-    //do nothing
-}
+//- (void)prepareForSegue:(UIStoryboardSegue *)segue
+//                 sender:(id)sender {
+//    // Make sure your segue name in storyboard is the same as this line
+//    if ([[segue identifier] isEqualToString:@"voteTransition"])
+//    {
+//        // Get reference to the destination view controller
+//        VoteViewController *vc = [segue destinationViewController];
+//        
+//        // Pass any objects to the view controller here, like...
+//        [vc setNamespacewithValue:&(index)];
+//    }
+//}
 
 @end

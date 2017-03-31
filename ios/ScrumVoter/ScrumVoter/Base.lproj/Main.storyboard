@@ -26,11 +26,23 @@
                                     <segue destination="X04-8K-2cf" kind="show" id="ntL-B2-Co1"/>
                                 </connections>
                             </button>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="Username" borderStyle="roundedRect" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="v6V-s6-sZo">
+                                <rect key="frame" x="165" y="40" width="270" height="30"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="Password" borderStyle="roundedRect" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="chW-R0-2zl">
+                                <rect key="frame" x="165" y="78" width="270" height="30"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstAttribute="centerX" secondItem="v6V-s6-sZo" secondAttribute="centerX" id="4IU-z3-0Dp"/>
                             <constraint firstAttribute="centerY" secondItem="tbN-u3-1Ao" secondAttribute="centerY" constant="0.5" id="MG6-Mg-oDj"/>
                             <constraint firstAttribute="centerX" secondItem="tbN-u3-1Ao" secondAttribute="centerX" id="jqK-bc-TvS"/>
+                            <constraint firstAttribute="centerX" secondItem="chW-R0-2zl" secondAttribute="centerX" id="rCM-wv-9BR"/>
                         </constraints>
                     </view>
                 </viewController>

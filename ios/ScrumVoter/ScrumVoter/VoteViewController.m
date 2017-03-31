@@ -20,6 +20,7 @@
 @implementation VoteViewController
 {
     NSArray *pickerData;
+//    NSInteger *namespace;
 }
 
 - (void)viewDidLoad
@@ -71,6 +72,17 @@
     
     [self.waitLabel setHidden:YES];
 }
+
+//-(void)setNamespacewithValue:(NSInteger*)value {
+//    namespace = value;
+//}
+
+//-(NSString *)getTeamCode {
+//    switch(namespace)
+//    {
+//        
+//    }
+//}
 
 
 @end

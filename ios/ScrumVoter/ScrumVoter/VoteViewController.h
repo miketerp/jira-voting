@@ -9,6 +9,6 @@
 #import <UIKit/UIKit.h>
 
 @interface VoteViewController : UIViewController <UIPickerViewDelegate, UIPickerViewDataSource>
-
+//-(void)setNamespacewithValue:(NSInteger*)value;
 
 @end
