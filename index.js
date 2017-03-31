@@ -225,11 +225,18 @@ sre.on('connection', function (socket) {
         'Authorization': 'Basic ' + auth
       }
     }).then((res) => {
-      openTix['sre'] = res.getBody('utf-8');
-      console.log(openTix['sre']);
-
-      let admin = hasAdmin(sreUsers);
-      sre.emit('open tickets', openTix.sre);
+      openTix.sre = res.getBody('utf-8');
+      let tix = [];
+      for (let t in openTix.sre) {
+        tix.push({
+          key: t.key,
+          summary: t.fields.summary,
+          description: t.fields.description,
+          priority: t.fields.priority.name,
+          status: t.fields.status.name
+        });
+      }
+      sre.emit('open tickets', {  issues: tix, total: tix.length });
     });
   });
 
