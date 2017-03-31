@@ -61,7 +61,6 @@
 
       <div id="ticketContainer" style="display: none;">
         <hr/>
-        <h3 id="ticket">Current Ticket:</h3>
         <div id="rootTicket">
         </div>
         <hr/>
@@ -96,8 +95,6 @@
       const setSelected = ($this) => {
         $('.tixselected').removeClass('tixselected');
         $this.addClass('tixselected');
-
-        $('#ticket').text('Current Ticket: ' + $this.text());
       }
 
       const setNameSpace = (ns, $this) => {
@@ -122,17 +119,20 @@
 
         socket.on('open tickets', function(data) {
           let i = 0;
-          let $card;
+
           data.issues.forEach(function (val, key) {
             let idString = 'tix' + i;
+
             var html = '<div id="' + idString + '" class="button"><h4>'
                 + val.key + '</h4>' + '<p>'+ val.description+ '</p>'+
                 '</div>';
+
             $('#rootTicket').append(html);
 
-            $card = $('#' + idString);
+            let $card = $('#' + idString);
 
             $card.click(() => {
+              console.log($card);
               setSelected($card);
               socket.emit('ticket selected', $('#' + idString + ' h4').text())
             });
