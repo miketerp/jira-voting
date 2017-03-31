@@ -21,6 +21,9 @@
     .selected {
       background-color: darkred;
     }
+    .tixselected {
+      background-color: darkred;
+    }
   </style>
 </head>
 <body style="text-align: center; padding: 2em">
@@ -36,15 +39,41 @@
         </div>
       </div>
 
-      <hr/>
+      <div id="login-panel" style="display: none;">
+        <hr/>
+        <div class="row" style="text-align: left;">
+          <div class="large-offset-3 large-6 columns">
+            <fieldset>
+              <legend>Login to JIRA</legend>
+              <label>Login
+                <input id="username" type="text" placeholder="Enter username"/>
+              </label>
+              <label>Password
+                <input id="password" type="password" placeholder="Enter password"/>
+              </label>
+              <input id="checkbox1" type="checkbox">
+              <label for="checkbox1">Remember me</label><br/>
+              <button id="hidePanel" style="margin: 0;">
+                Login
+              </button>
+            </fieldset>
+          </div>
+        </div>
+      </div>
 
-      <h3 id="ticket">Current Ticket:</h3>
-      <div id="tix1" class="button">TICK-101</div>
-      <div id="tix2" class="button">TICK-102</div>
-      <div id="tix3" class="button">TICK-103</div>
-      <hr/>
-      <h3>Team Members Voted</h3>
-      <ul id="voters"></ul>
+      <div id="ticketContainer" style="display: none;">
+        <hr/>
+        <h3 id="ticket">Current Ticket:</h3>
+        <div id="tix1" class="button">TICK-101</div>
+        <div id="tix2" class="button">TICK-102</div>
+        <div id="tix3" class="button">TICK-103</div>
+
+        <hr/>
+        <h3>Team Members Voted</h3>
+        <div>
+          <ul id="voters" style="list-style-type: none;"></ul>
+        </div>
+      </div>
     </div>
   </div>
   <script>
@@ -57,15 +86,49 @@
       $('#sre-btn').click(() => setNameSpace('site-reliability', $('#sre-btn')));
       $('#bbd-btn').click(() => setNameSpace('storefront', $('#bbd-btn')));
 
-      $('#tix1').click(() => socket.emit('ticket selected', $('#tix1').text()));
-      $('#tix2').click(() => socket.emit('ticket selected', $('#tix2').text()));
-      $('#tix3').click(() => socket.emit('ticket selected', $('#tix3').text()));
+      $('#tix1').click(() => {
+        setSelected($('#tix1'));
+        socket.emit('ticket selected', $('#tix1').text())
+      });
+
+      $('#tix2').click(() => {
+        setSelected($('#tix2'));
+        socket.emit('ticket selected', $('#tix2').text())
+      });
+
+      $('#tix3').click(() => {
+        setSelected($('#tix3'));
+        socket.emit('ticket selected', $('#tix3').text())
+      });
+
+      $('#hidePanel').click(() => {
+        $('#login-panel').css("display", "none");
+        var a = $('#username').val();
+        var b = $('#password').val();
+        sendToken(btoa(a + ":" + b));
+      });
+
+      const sendToken = (token) => {
+        socket.emit('get open tickets', token);
+        console.log('sent token');
+        console.log('Authenticated ...');
+        $('#ticketContainer').css('display', 'inline');
+      }
+
+      const setSelected = ($this) => {
+        $('.tixselected').removeClass('tixselected');
+        $this.addClass('tixselected');
+
+        $('#ticket').text('Current Ticket: ' + $this.text());
+      }
 
       const setNameSpace = (ns, $this) => {
         socket = io('/' + ns);
         $('#team').text('Current Team: ' + ns);
         $('.selected').removeClass('selected');
         $this.addClass('selected');
+
+        $('#login-panel').css("display", "inline");
 
         socket.emit('adminIsIn', {});
 
@@ -77,6 +140,10 @@
           let node = document.createElement('li');
           node.appendChild(document.createTextNode(data))
           $('#voters').append(node);
+        });
+
+        socket.on('get open tickets', function(data) {
+          console.log('lol', data);
         });
       }
     });

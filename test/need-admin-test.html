@@ -5,16 +5,18 @@
   <title>Namespace Test v0.0.1</title>
   <script src="/socket.io/socket.io.js"></script>
   <script src="https://code.jquery.com/jquery-1.11.1.js"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/foundation/5.5.3/css/foundation.min.css">
   <style>
     .button {
       height: 50px;
-      width: 100px;
+      width: 125px;
       background-color: cornflowerblue;
       color: #d9deff;
       font-size: 1.5em;
       border: solid 1px black;
-      display: block;
+      display: inline-block;
       margin: 10px;
+      padding: 10px;
     }
     .selected {
       background-color: darkred;
@@ -22,35 +24,53 @@
     .hidden {
       display: none;
     }
-  </style></head>
-<body>
-<h3 id="team">Current Team:</h3>
-<div id="sr-btn" class="button">SR</div>
-<div id="wis-btn" class="button">WIS</div>
-<div id="bbd-btn" class="button">BBD</div>
-<div id="sre-btn" class="button">SRE</div>
+  </style>
+</head>
+<body style="text-align: center; padding: 2em">
+  <div class="row">
+    <div class="large-12 columns">
+      <h3 id="team">Current Team:</h3>
+      <div id="sr-btn" class="button">SR</div>
+      <div id="wis-btn" class="button">WIS</div>
+      <div id="bbd-btn" class="button">BBD</div>
+      <div id="sre-btn" class="button">SRE</div>
 
-<div id="vote-area" class="hidden">
-  <label>Name:</label><input id="name" type="text" size="20"/>
-  <label>Vote:</label><input id="vote" type="text" size="20"/>
-  <div id="vote-button" class="button">VOTE</div>
-  <div id="t-info">
-    <h4 id="t-name"></h4>
-    <p id="t-desc"></p>
+      <div class="row" style="text-align: left">
+        <div class="large-offset-2 large-8 columns">
+          <div id="vote-area" class="hidden">
+            <form>
+              <fieldset>
+                <div id="t-info">
+                  <h4 id="t-name"></h4>
+                  <p id="t-desc"></p>
+                </div>
+
+                <label>Name:</label><input id="name" type="text" size="20"/>
+                <label>Vote:</label><input id="vote" type="text" size="20"/>
+                <div id="vote-button" class="button">VOTE</div>
+              </fieldset>
+            </form>
+          </div>
+          <div id="results" class="hidden">
+            <p id="response"></p>
+          </div>
+        </div>
+      </div>
+    </div>
   </div>
-</div>
-<div id="results" class="hidden">
-  <p id="response"></p>
-</div>
 
 <script>
   $(function () {
 
     let socket = undefined;
 
-    $('#vote-button').click(function(){
+    $('#vote-button').click(function() {
       if (socket) {
-        socket.emit('vote', {vote: $('#vote').val(), name: $('#name').val()});
+        socket.emit('vote', {
+          vote: $('#vote').val(), name: $('#name').val()
+        });
+
+        $(this).css("visibility", "hidden");
       }
     });
 
@@ -72,6 +92,7 @@
       socket.on('response', function(msg){
         $('#voting-area').addClass('hidden');
         $('#results').removeClass('hidden');
+        $('#vote-button').css('visibility', 'visible');
         $('#response').text(msg);
       });
 

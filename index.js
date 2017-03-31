@@ -27,13 +27,9 @@ app.get('/need-admin', function (req, res) {
   res.sendFile(__dirname + '/test/need-admin-test.html');
 });
 
-app.get('/basic-test', function (req, res) {
-  res.sendFile(__dirname + '/test/index.html');
-});
-
-app.get('/name-test', function (req, res) {
-  res.sendFile(__dirname + '/test/name-test.html');
-});
+// app.get('/name-test', function (req, res) {
+//   res.sendFile(__dirname + '/test/name-test.html');
+// });
 
 /**
  * SOCKET.IO NAMESPACES
