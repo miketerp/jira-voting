@@ -218,6 +218,7 @@ sre.on('connection', function (socket) {
   });
 
   socket.on('get open tickets', function (auth) {
+    console.log(auth);
     request('GET', 'https://issues.groupbyinc.com/rest/api/2/search', {
       headers: {
         'Content-type': 'application/json',
@@ -226,8 +227,9 @@ sre.on('connection', function (socket) {
     }).then((res) => {
       openTix['sre'] = res.getBody('utf-8');
       console.log(openTix['sre']);
-      // let admin = hasAdmin(sreUsers);
-      // sre.to[admin].emit('open tickets')
+
+      let admin = hasAdmin(sreUsers);
+      sre.emit('open tickets', openTix.sre);
     });
   });
 
