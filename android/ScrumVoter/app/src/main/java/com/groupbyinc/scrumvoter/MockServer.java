@@ -98,32 +98,32 @@ public class MockServer {
     }
 
     public static String getTicket() {
-        String result = "GBI";
+        String result = "";
 
-        switch (position) {
-            case 0:
-                result = "SR";
-                break;
-            case 1:
-                result = "SRE";
-                break;
-            case 2:
-                result = "BBD";
-                break;
-            case 3:
-                result = "WIS";
-                break;
-            case 4:
-                result = "SC";
-                break;
-            default:
-                result = "SR";
-                break;
-        }
+//        switch (position) {
+//            case 0:
+//                result = "SR";
+//                break;
+//            case 1:
+//                result = "SRE";
+//                break;
+//            case 2:
+//                result = "BBD";
+//                break;
+//            case 3:
+//                result = "WIS";
+//                break;
+//            case 4:
+//                result = "SC";
+//                break;
+//            default:
+//                result = "SR";
+//                break;
+//        }
 
         n++;
 
-        result+="-" + (234 + n) + ":" + getMessage() + ":1,2,3,5,8,13,21";
+        result+="TEST-" + (12 + n) + ":" + getMessage() + ":1,2,3,5,8,13,21";
 
         return result;
     }
@@ -131,11 +131,11 @@ public class MockServer {
     private static String getMessage() {
         switch (n) {
             case 1:
-                return "Make CC great again.";
+                return "Emit a Tachyon Beam";
             case 2:
-                return "Do stuff.";
+                return "Generate a Gravametric Pulse";
             case 3:
-                return "500 errors and stuff.";
+                return "Fix the damned replicators on Deck 12";
             case 4:
                 return "Sitemaps :(";
             case 5:
