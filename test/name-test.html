@@ -22,20 +22,20 @@
   </style>
 </head>
 <body>
-<h3 id="team">Current Team:</h3>
-<div id="sr-btn" class="button">SR</div>
-<div id="wis-btn" class="button">WIS</div>
-<div id="bbd-btn" class="button">BBD</div>
-<div id="sre-btn" class="button">SRE</div>
+  <h3 id="team">Current Team:</h3>
+  <div id="sr-btn" class="button">SR</div>
+  <div id="wis-btn" class="button">WIS</div>
+  <div id="bbd-btn" class="button">BBD</div>
+  <div id="sre-btn" class="button">SRE</div>
 
-<label>Name:</label><input id="name" type="text" size="20"/>
-<label>Vote:</label><input id="vote" type="text" size="20"/>
+  <label>Name:</label><input id="name" type="text" size="20"/>
+  <label>Vote:</label><input id="vote" type="text" size="20"/>
   <div id="vote-button" class="button">VOTE</div>
 
   <script>
     $(function () {
 
-      var socket = undefined;
+      let socket = undefined;
 
       $('#vote-button').click(function(){
         if (socket) {
@@ -43,49 +43,25 @@
         }
       });
 
-      $('#sr-btn').click(function(){
-        socket = io('/searchandiser');
-        $('#team').text('Current Team: Searchandiser');
+      $('#sr-btn').click(() => setNameSpace('searchandiser', $('#sr-btn')));
+
+      $('#wis-btn').click(() => setNameSpace('wisdom', $('#wis-btn')));
+
+      $('#sre-btn').click(() => setNameSpace('site-reliability', $('#sre-btn')));
+
+      $('#bbd-btn').click(() => setNameSpace('storefront', $('#bbd-btn')));
+
+      const setNameSpace = (ns, $this) => {
+        if (socket) socket.disconnect();
+        socket = io('/' + ns);
+        $('#team').text('Current Team: ' + ns);
         $('.selected').removeClass('selected');
-        $(this).addClass('selected');
+        $this.addClass('selected');
 
         socket.on('response', function(msg){
           $('body').append($('<p>').text(msg));
         });
-      });
-
-      $('#wis-btn').click(function(){
-        socket = io('/widom');
-        $('#team').text('Current Team: Wisdom');
-        $('.selected').removeClass('selected');
-        $(this).addClass('selected');
-
-        socket.on('response', function(msg){
-          $('body').append($('<p>').text(msg));
-        });
-      });
-
-      $('#sre-btn').click(function(){
-        socket = io('/site-reliability');
-        $('#team').text('Current Team: Site Reliability');
-        $('.selected').removeClass('selected');
-        $(this).addClass('selected');
-
-        socket.on('response', function(msg){
-          $('body').append($('<p>').text(msg));
-        });
-      });
-
-      $('#bbd-btn').click(function(){
-        socket = io('/storefront');
-        $('#team').text('Current Team: Storefront');
-        $('.selected').removeClass('selected');
-        $(this).addClass('selected');
-
-        socket.on('response', function(msg){
-          $('body').append($('<p>').text(msg));
-        });
-      });
+      }
     });
   </script>
 </body>

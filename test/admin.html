@@ -2,9 +2,73 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Title</title>
+  <title>Admin Test v0.0.1</title>
+  <script src="/socket.io/socket.io.js"></script>
+  <script src="https://code.jquery.com/jquery-1.11.1.js"></script>
+  <style>
+    .button {
+      height: 50px;
+      width: 100px;
+      background-color: cornflowerblue;
+      color: #d9deff;
+      font-size: 1.5em;
+      border: solid 1px black;
+      display: inline-block;
+      margin: 10px;
+    }
+    .selected {
+      background-color: darkred;
+    }
+  </style>
 </head>
 <body>
+  <h3 id="team">Current Team:</h3>
+  <div id="sr-btn" class="button">SR</div>
+  <div id="wis-btn" class="button">WIS</div>
+  <div id="bbd-btn" class="button">BBD</div>
+  <div id="sre-btn" class="button">SRE</div>
+  <hr/>
+  <h3 id="ticket">Current Ticket:</h3>
+  <div id="tix1" class="button">TICK-101</div>
+  <div id="tix2" class="button">TICK-102</div>
+  <div id="tix3" class="button">TICK-103</div>
+  <hr/>
+  <h3>Team Members Voted</h3>
+  <ul id="voters"></ul>
 
+  <script>
+    $(function () {
+
+      let socket = undefined;
+
+      $('#sr-btn').click(() => setNameSpace('searchandiser', $('#sr-btn')));
+      $('#wis-btn').click(() => setNameSpace('wisdom', $('#wis-btn')));
+      $('#sre-btn').click(() => setNameSpace('site-reliability', $('#sre-btn')));
+      $('#bbd-btn').click(() => setNameSpace('storefront', $('#bbd-btn')));
+
+      $('#tix1').click(() => socket.emit('ticket selected', $('#tix1').text()));
+      $('#tix2').click(() => socket.emit('ticket selected', $('#tix2').text()));
+      $('#tix3').click(() => socket.emit('ticket selected', $('#tix3').text()));
+
+      const setNameSpace = (ns, $this) => {
+        socket = io('/' + ns);
+        $('#team').text('Current Team: ' + ns);
+        $('.selected').removeClass('selected');
+        $this.addClass('selected');
+
+        socket.emit('adminIsIn', {});
+
+        socket.on('response', function(msg){
+          $('body').append($('<p>').text(msg));
+        });
+
+        socket.on('voter voted', function(data) {
+          let node = document.createElement('li');
+          node.appendChild(document.createTextNode(data))
+          $('#voters').append(node);
+        });
+      }
+    });
+  </script>
 </body>
 </html>
