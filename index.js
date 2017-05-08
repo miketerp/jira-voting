@@ -39,7 +39,7 @@ app.get('/need-admin', function (req, res) {
  * SOCKET.IO NAMESPACES
  */
 
-const openTix = { sr: [], bbd: [], wis: [], sre: []};
+const openTix = {sr: [], bbd: [], wis: [], sre: []};
 
 // DEFAULT namespace - should do nothing.
 io.on('connection', function (socket) {
@@ -54,41 +54,48 @@ io.on('connection', function (socket) {
 let srUsers = {};
 sr.on('connection', function (socket) {
   srUsers[socket.id] = {};
-  console.log('User connected to Searchandiser');
+  console.log('User connected to SRE');
 
   socket.on('disconnect', function () {
-    console.log('User disconnected from Searchandiser');
+    console.log('User disconnected from SRE');
     delete srUsers[this.id];
   });
 
   socket.on('adminIsIn', function () {
-    console.log('Administrator has logged into SR');
+    console.log('Administrator has logged into SRE');
     srUsers[this.id] = {admin: true};
   });
 
   socket.on('get open tickets', function (auth) {
     console.log(auth);
-    request('GET', 'https://issues.groupbyinc.com/rest/api/2/search', {
+    let admin           = hasAdmin(srUsers);
+    srUsers[admin].auth = auth;
+    request('POST', 'https://issues.groupbyinc.com/rest/api/2/search', {
       headers: {
-        'Content-type': 'application/json',
+        'Content-type':  'application/json',
         'Authorization': 'Basic ' + auth
-      }
+      },
+      body:    JSON.stringify({
+        'jql': 'project in (test) AND status = Backlog AND labels = VotingTest AND \"Story Points\" = -1 ORDER BY rank ASC'
+      })
     }).then((res) => {
-      openTix.sr = res.getBody('utf-8');
+      openTix['sr'] = JSON.parse(res.getBody('utf-8'));
+
       let tix = [];
-      for (let t in openTix.sr) {
+
+      openTix['sr'].issues.forEach(function (val, key) {
         tix.push({
-          key: t.key,
-          summary: t.fields.summary,
-          description: t.fields.description,
-          priority: t.fields.priority.name,
-          status: t.fields.status.name
+          key:         val.key,
+          summary:     val.fields.summary,
+          description: val.fields.description,
+          priority:    val.fields.priority.name,
+          status:      val.fields.status.name
         });
-      }
-      sr.emit('open tickets', { issues: tix, total: tix.length });
+      });
+      sr.emit('open tickets', {issues: tix, total: tix.length});
     });
   });
-  
+
   socket.on('ticket selected', function (tname) {
     console.log('Administrator has started a ticket');
     let admin = hasAdmin(srUsers);
@@ -99,10 +106,10 @@ sr.on('connection', function (socket) {
 
   socket.on('vote', function (data) {
     srUsers[this.id] = {name: data.name, vote: data.vote, admin: false};
-    const msg        = data.name + ' on Searchandiser voted ' + data.vote;
+    const msg        = data.name + ' on SRE voted ' + data.vote;
     console.log(msg);
 
-    let admin = hasAdmin(srUsers);
+    let admin = hasAdmin(srUsers)
     console.log('Admin: ' + admin);
     if (admin) {
       sr.to(admin).emit('voter voted', data.name + ': ' + data.vote);
@@ -120,7 +127,21 @@ sr.on('connection', function (socket) {
           srUsers[key].ticket = undefined;
         }
       }
+      srUsers[admin].holdingVote = voteTotal;
     }
+  });
+
+  socket.on('send jira', function () {
+    let admin = hasAdmin(srUsers);
+    request('PUT', 'https://issues.groupbyinc.com/rest/api/2/issues/' + srUsers[admin].ticket, {
+      headers: {
+        'Content-type':  'application/json',
+        'Authorization': 'Basic ' + srUsers[admin].auth
+      },
+      body:    JSON.stringify({
+        'jql': '{ "update": { "customfield_10002": [ { "set": ' + srUsers[admin].holdingVote + ' } ] } }'
+      })
+    })
   });
 });
 
@@ -128,38 +149,44 @@ sr.on('connection', function (socket) {
 let bbdUsers = {};
 bbd.on('connection', function (socket) {
   bbdUsers[socket.id] = {};
-  console.log('User connected to Storefront');
+  console.log('User connected to SRE');
 
   socket.on('disconnect', function () {
-    console.log('User disconnected from Storefront');
+    console.log('User disconnected from SRE');
     delete bbdUsers[this.id];
   });
 
   socket.on('adminIsIn', function () {
-    console.log('Administrator has logged into BBD');
+    console.log('Administrator has logged into SRE');
     bbdUsers[this.id] = {admin: true};
   });
 
   socket.on('get open tickets', function (auth) {
     console.log(auth);
-    request('GET', 'https://issues.groupbyinc.com/rest/api/2/search', {
+    bbdUsers[admin].auth = auth;
+    request('POST', 'https://issues.groupbyinc.com/rest/api/2/search', {
       headers: {
-        'Content-type': 'application/json',
+        'Content-type':  'application/json',
         'Authorization': 'Basic ' + auth
-      }
+      },
+      body:    JSON.stringify({
+        'jql': 'project in (test) AND status = Backlog AND labels = VotingTest AND \"Story Points\" = -1 ORDER BY rank ASC'
+      })
     }).then((res) => {
-      openTix.bbd = res.getBody('utf-8');
+      openTix['bbd'] = JSON.parse(res.getBody('utf-8'));
+
       let tix = [];
-      for (let t in openTix.bbd) {
+
+      openTix['bbd'].issues.forEach(function (val, key) {
         tix.push({
-          key: t.key,
-          summary: t.fields.summary,
-          description: t.fields.description,
-          priority: t.fields.priority.name,
-          status: t.fields.status.name
+          key:         val.key,
+          summary:     val.fields.summary,
+          description: val.fields.description,
+          priority:    val.fields.priority.name,
+          status:      val.fields.status.name
         });
-      }
-      bbd.emit('open tickets', { issues: tix, total: tix.length });
+      });
+      bbd.emit('open tickets', {issues: tix, total: tix.length});
     });
   });
 
@@ -173,7 +200,7 @@ bbd.on('connection', function (socket) {
 
   socket.on('vote', function (data) {
     bbdUsers[this.id] = {name: data.name, vote: data.vote, admin: false};
-    const msg         = data.name + ' on Storefront voted ' + data.vote;
+    const msg         = data.name + ' on SRE voted ' + data.vote;
     console.log(msg);
 
     let admin = hasAdmin(bbdUsers)
@@ -194,7 +221,21 @@ bbd.on('connection', function (socket) {
           bbdUsers[key].ticket = undefined;
         }
       }
+      bbdUsers[admin].holdingVote = voteTotal;
     }
+  });
+
+  socket.on('send jira', function () {
+    let admin = hasAdmin(bbdUsers);
+    request('PUT', 'https://issues.groupbyinc.com/rest/api/2/issues/' + bbdUsers[admin].ticket, {
+      headers: {
+        'Content-type':  'application/json',
+        'Authorization': 'Basic ' + bbdUsers[admin].auth
+      },
+      body:    JSON.stringify({
+        'jql': '{ "update": { "customfield_10002": [ { "set": ' + bbdUsers[admin].holdingVote + ' } ] } }'
+      })
+    })
   });
 });
 
@@ -202,38 +243,44 @@ bbd.on('connection', function (socket) {
 let wisUsers = {};
 wis.on('connection', function (socket) {
   wisUsers[socket.id] = {};
-  console.log('User connected to Wisdom');
+  console.log('User connected to SRE');
 
   socket.on('disconnect', function () {
-    console.log('User disconnected from Wisdom');
+    console.log('User disconnected from SRE');
     delete wisUsers[this.id];
   });
 
   socket.on('adminIsIn', function () {
-    console.log('Administrator has logged into WIS');
+    console.log('Administrator has logged into SRE');
     wisUsers[this.id] = {admin: true};
   });
 
   socket.on('get open tickets', function (auth) {
     console.log(auth);
-    request('GET', 'https://issues.groupbyinc.com/rest/api/2/search', {
+    wisUsers[admin].auth = auth;
+    request('POST', 'https://issues.groupbyinc.com/rest/api/2/search', {
       headers: {
-        'Content-type': 'application/json',
+        'Content-type':  'application/json',
         'Authorization': 'Basic ' + auth
-      }
+      },
+      body:    JSON.stringify({
+        'jql': 'project in (test) AND status = Backlog AND labels = VotingTest AND \"Story Points\" = -1 ORDER BY rank ASC'
+      })
     }).then((res) => {
-      openTix.wis = res.getBody('utf-8');
+      openTix['wis'] = JSON.parse(res.getBody('utf-8'));
+
       let tix = [];
-      for (let t in openTix.wis) {
+
+      openTix['wis'].issues.forEach(function (val, key) {
         tix.push({
-          key: t.key,
-          summary: t.fields.summary,
-          description: t.fields.description,
-          priority: t.fields.priority.name,
-          status: t.fields.status.name
+          key:         val.key,
+          summary:     val.fields.summary,
+          description: val.fields.description,
+          priority:    val.fields.priority.name,
+          status:      val.fields.status.name
         });
-      }
-      wis.emit('open tickets', { issues: tix, total: tix.length });
+      });
+      wis.emit('open tickets', {issues: tix, total: tix.length});
     });
   });
 
@@ -247,7 +294,7 @@ wis.on('connection', function (socket) {
 
   socket.on('vote', function (data) {
     wisUsers[this.id] = {name: data.name, vote: data.vote, admin: false};
-    const msg         = data.name + ' on Wisdom voted ' + data.vote;
+    const msg         = data.name + ' on SRE voted ' + data.vote;
     console.log(msg);
 
     let admin = hasAdmin(wisUsers)
@@ -256,7 +303,6 @@ wis.on('connection', function (socket) {
       wis.to(admin).emit('voter voted', data.name + ': ' + data.vote);
     }
 
-    // time to tally the votes?
     let voteTotal = votesAreIn(wisUsers);
     console.log(voteTotal);
     if (voteTotal) {
@@ -269,7 +315,21 @@ wis.on('connection', function (socket) {
           wisUsers[key].ticket = undefined;
         }
       }
+      wisUsers[admin].holdingVote = voteTotal;
     }
+  });
+
+  socket.on('send jira', function () {
+    let admin = hasAdmin(wisUsers);
+    request('PUT', 'https://issues.groupbyinc.com/rest/api/2/issues/' + wisUsers[admin].ticket, {
+      headers: {
+        'Content-type':  'application/json',
+        'Authorization': 'Basic ' + wisUsers[admin].auth
+      },
+      body:    JSON.stringify({
+        'jql': '{ "update": { "customfield_10002": [ { "set": ' + wisUsers[admin].holdingVote + ' } ] } }'
+      })
+    })
   });
 });
 
@@ -291,12 +351,14 @@ sre.on('connection', function (socket) {
 
   socket.on('get open tickets', function (auth) {
     console.log(auth);
+    let admin            = hasAdmin(sreUsers);
+    sreUsers[admin].auth = auth;
     request('POST', 'https://issues.groupbyinc.com/rest/api/2/search', {
       headers: {
-        'Content-type': 'application/json',
+        'Content-type':  'application/json',
         'Authorization': 'Basic ' + auth
       },
-      body: JSON.stringify({
+      body:    JSON.stringify({
         'jql': 'project in (test) AND status = Backlog AND labels = VotingTest AND \"Story Points\" = -1 ORDER BY rank ASC'
       })
     }).then((res) => {
@@ -304,16 +366,16 @@ sre.on('connection', function (socket) {
 
       let tix = [];
 
-      openTix['sre'].issues.forEach(function(val, key) {
+      openTix['sre'].issues.forEach(function (val, key) {
         tix.push({
-          key: val.key,
-          summary: val.fields.summary,
+          key:         val.key,
+          summary:     val.fields.summary,
           description: val.fields.description,
-          priority: val.fields.priority.name,
-          status: val.fields.status.name
+          priority:    val.fields.priority.name,
+          status:      val.fields.status.name
         });
       });
-      sre.emit('open tickets', { issues: tix, total: tix.length });
+      sre.emit('open tickets', {issues: tix, total: tix.length});
     });
   });
 
@@ -345,24 +407,32 @@ sre.on('connection', function (socket) {
           sreUsers[key].vote = undefined;
         } else {
           sre.to(key).emit('response', 'All the votes are in! Your team voted ' + voteTotal + ' on ' + sreUsers[key].ticket + '.');
-          sreUsers[key].ticket = undefined;
         }
       }
       sreUsers[admin].holdingVote = voteTotal;
     }
   });
 
-  socket.on('send jira', function() {
+  socket.on('send jira', function () {
     let admin = hasAdmin(sreUsers);
-    request('PUT', 'https://issues.groupbyinc.com/rest/api/2/issues/' + sreUsers[admin].ticket, {
+    console.log({
+      ticket: sreUsers[admin].ticket,
+      auth:   sreUsers[admin].auth,
+      vote:   sreUsers[admin].holdingVote,
+      admin:  admin
+    });
+    request('PUT', 'https://issues.groupbyinc.com/rest/api/2/issue/' + sreUsers[admin].ticket, {
       headers: {
-        'Content-type': 'application/json',
-        'Authorization': 'Basic ' + auth
+        'Content-type':  'application/json',
+        'Authorization': 'Basic ' + sreUsers[admin].auth
       },
-      body: JSON.stringify({
-        'jql': '{ "update": { "customfield_10002": [ { "set": ' + sreUsers[admin].holdingVote + ' } ] } }'
+      body:    JSON.stringify({
+        "update": { "customfield_10002": [ { "set": ' + sreUsers[admin].holdingVote + ' } ] }
       })
     })
+    .then((res) => console.log('Result: ' + res.getBody('utf-8')))
+    .catch((res) => console.log('Error: ' + res.getBody('utf-8')));
+    sreUsers[admin].ticket = undefined;
   });
 });
 
@@ -401,33 +471,33 @@ const tickets = {'TICK-101': 'Description for ticket #102.', 'TICK-102': 'Descri
 
 const userRegistry = [
   {
-    name: 'michael',
-    admin: false,
+    name:       'michael',
+    admin:      false,
     namespaces: ['sr', 'sre']
   },
   {
-    name: 'abegail',
-    admin: false,
+    name:       'abegail',
+    admin:      false,
     namespaces: ['sr']
   },
   {
-    name: 'amir',
-    admin: false,
+    name:       'amir',
+    admin:      false,
     namespaces: ['sr']
   },
   {
-    name: 'garry',
-    admin: true,
+    name:       'garry',
+    admin:      true,
     namespaces: ['sr', 'sre']
   },
   {
-    name: 'bruce',
-    admin: true,
+    name:       'bruce',
+    admin:      true,
     namespaces: ['wis', 'bbd']
   },
   {
-    name: 'tahir',
-    admin: false,
+    name:       'tahir',
+    admin:      false,
     namespaces: ['wis']
   },
 ];
